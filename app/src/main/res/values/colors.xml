@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <resources>
-        <color name="colorPrimary">#769CDF</color>
-        <color name="colorSecondary">#8991A2</color>
-        <color name="colorTertiary">#A288A6</color>
-        <color name="colorError">#FF5449</color>
-        <color name="colorNeutral">#000000</color>
-        <color name="colorNeutralVariant">#FFFFFF</color>
-    </resources>
-
+    <color name="colorPrimary">#769CDF</color>
+    <color name="colorSecondary">#8991A2</color>
+    <color name="colorTertiary">#A288A6</color>
+    <color name="colorError">#FF5449</color>
+    <color name="colorNeutral">#000000</color>
+    <color name="colorNeutralVariant">#FFFFFF</color>
 </resources>
