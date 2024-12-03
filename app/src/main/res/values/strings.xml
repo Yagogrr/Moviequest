@@ -3,4 +3,17 @@
     <string name="nomusuariInputRegistro">NomUsuari</string>
     <string name="cognomsInputRegistro">Cognoms</string>
     <string name="data_de_naixement_registre">Data de naixement</string>
+    <string name="nom_d_usuari_hint">Nom</string>
+    <string name="_16_11_2005_birthday_example">16/11/2005</string>
+    <string name="data_d_aniversari_hint">Data d\' aniversari</string>
+    <string name="n_mero_de_tel_fon_example">Número de telèfon</string>
+    <string name="cognoms_d_usuari_hint">Cognoms</string>
+    <string name="user123_example">User123</string>
+    <string name="username_hint">Nom d\' usuari</string>
+    <string name="exemple_gmail_com_example">exemple@gmail.com</string>
+    <string name="gmail_hint">Gmail</string>
+    <string name="contrasenya_hint">Contrasenya</string>
+    <string name="confirmar_contrasenya_hint">Confirmar contrasenya</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
