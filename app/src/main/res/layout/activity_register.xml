@@ -11,8 +11,8 @@
     <!-- Imagen en la parte superior -->
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="429dp"
-        android:layout_height="196dp"
+        android:layout_width="430dp"
+        android:layout_height="238dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -266,6 +266,31 @@
         app:layout_constraintTop_toBottomOf="@+id/pw2"
         android:text="@string/confirmar_contrasenya_hint"
         android:textColor="#FFFFFF" />
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="50dp"
+        android:text="@string/iniciar_sessi_text"
+        android:textColor="#FFFFFF"
+        app:layout_constraintTop_toBottomOf="@id/textViewpw2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/username"
+        app:layout_constraintHorizontal_chainStyle="packed"/>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Sortir"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="50dp"
+        app:layout_constraintTop_toBottomOf="@id/textViewpw2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/pw2"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
