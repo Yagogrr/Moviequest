@@ -14,4 +14,6 @@
     <string name="gmail_hint">Gmail</string>
     <string name="contrasenya_hint">Contrasenya</string>
     <string name="confirmar_contrasenya_hint">Confirmar contrasenya</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
