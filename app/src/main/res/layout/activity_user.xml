@@ -1,120 +1,180 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
-    android:padding="16dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#000000">
 
-    <LinearLayout
+    <!-- Profile Icon -->
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/profile_icon"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="30dp"
+        android:src="@drawable/profile_image"
+        android:scaleType="centerInside"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Theme Toggle Button -->
+    <ImageButton
+        android:id="@+id/theme_toggle"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/shutter_island"
+        android:contentDescription="Toggle Theme"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Info Button -->
+    <ImageButton
+        android:id="@+id/info_button"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/shutter_island"
+        android:contentDescription="Information"
+        app:layout_constraintTop_toTopOf="@id/theme_toggle"
+        app:layout_constraintEnd_toStartOf="@id/theme_toggle" />
+
+    <!-- User Details -->
+    <TextView
+        android:id="@+id/user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="NOM    COGNOM"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:fontFamily="sans-serif-light"
+        android:letterSpacing="0.3"
+        app:layout_constraintTop_toBottomOf="@id/profile_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/user_gmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="GMAIL"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-light"
+        app:layout_constraintTop_toBottomOf="@id/user_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/user_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="TELÈFON"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-light"
+        app:layout_constraintTop_toBottomOf="@id/user_gmail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Forgot Password -->
+    <TextView
+        android:id="@+id/forgot_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="HAS OBLIDAT LA CONTRASENYA?"
+        android:textColor="#888888"
+        android:textSize="18sp"
+        android:fontFamily="sans-serif-light"
+        android:letterSpacing="0.2"
+        app:layout_constraintTop_toBottomOf="@id/user_phone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Analysis Section -->
+    <TextView
+        android:id="@+id/analysis_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="ANÀLISI"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:fontFamily="sans-serif"
+        android:letterSpacing="0.2"
+        app:layout_constraintTop_toBottomOf="@id/forgot_password"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="15dp"
+        android:background="#888888"
+        app:layout_constraintTop_toBottomOf="@id/analysis_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Movies Section -->
+    <TextView
+        android:id="@+id/movies_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Pel·lícules que més t'han agradat:"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-light"
+        app:layout_constraintTop_toBottomOf="@id/analysis_title"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <HorizontalScrollView
+        android:id="@+id/movies_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:padding="16dp">
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toBottomOf="@id/movies_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Profile Image -->
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/profile_image"
-            android:layout_marginBottom="16dp"
-            android:backgroundTint="#D8C7FF"
-            android:scaleType="centerCrop" />
-
-        <!-- Name and Contact -->
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="NOM COGNOM"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            android:fontFamily="sans-serif"
-            android:layout_marginBottom="8dp" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="GMAIL"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            android:layout_marginBottom="4dp" />
+            <ImageView
+                android:id="@+id/movie_1"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_marginEnd="15dp"
+                android:src="@drawable/shutter_island" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TELÈFON"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            android:layout_marginBottom="16dp" />
+            <ImageView
+                android:id="@+id/movie_2"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_marginEnd="15dp"
+                android:src="@drawable/fight_club" />
 
-        <!-- Forgot Password -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="HAS OBLIDAT LA CONTRASENYA?"
-            android:textColor="#FFFFFF"
-            android:textSize="12sp"
-            android:fontFamily="sans-serif-light"
-            android:layout_marginBottom="32dp" />
+            <ImageView
+                android:id="@+id/movie_3"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_marginEnd="15dp"
+                android:src="@drawable/shawshank_redemption" />
 
-        <!-- Analysis Section -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ANÀLISI"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            android:fontFamily="sans-serif-medium"
-            android:layout_marginBottom="8dp" />
+            <ImageView
+                android:id="@+id/movie_4"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:src="@drawable/abierto_hasta_el_amanecer" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#FFFFFF"
-            android:layout_marginBottom="16dp" />
+        </LinearLayout>
+    </HorizontalScrollView>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Pel·lícules que més t'han agradat:"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            android:layout_marginBottom="8dp" />
-
-        <!-- Movie Thumbnails -->
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="none">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="60dp"
-                    android:src="@drawable/cadena_perpetua"
-                    android:layout_marginEnd="8dp" />
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="60dp"
-                    android:src="@drawable/shutter_island"
-                    android:layout_marginEnd="8dp" />
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="60dp"
-                    android:src="@drawable/logo"
-                    android:layout_marginEnd="8dp" />
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="60dp"
-                    android:src="@drawable/logo" />
-            </LinearLayout>
-        </HorizontalScrollView>
-    </LinearLayout>
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
