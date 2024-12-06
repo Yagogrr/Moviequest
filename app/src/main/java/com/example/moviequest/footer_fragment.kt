@@ -1,5 +1,6 @@
 package com.example.moviequest
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -35,13 +36,13 @@ class footer_fragment : Fragment() {
 
         search.setOnClickListener {
             // Acción para la búsqueda
-            val intent = Intent(activity, SearchActivity::class.java)
+            val intent = Intent(activity, footer_fragment::class.java)
             startActivity(intent)
         }
 
         user.setOnClickListener {
             // Acción para el usuario
-            val intent = Intent(activity, UserActivity::class.java)
+            val intent = Intent(activity, user_activity::class.java)
             startActivity(intent)
         }
 
