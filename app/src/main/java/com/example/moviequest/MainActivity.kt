@@ -21,8 +21,19 @@ class MainActivity : AppCompatActivity() {
         }
         val registre: Button = findViewById(R.id.button1)
         registre.setOnClickListener{
-            val intent = Intent(this, user_activity::class.java)
+            val intent = Intent(this, Register_activity::class.java)
             startActivity(intent)
         }
+        var search: Button = findViewById(R.id.button2)
+        search.setOnClickListener{
+            var intent = Intent(this,buscar_peliculas::class.java)
+            startActivity(intent)
+        }
+        var sortir : Button = findViewById(R.id.button3)
+        sortir.setOnClickListener{
+            finish()
+            System.exit(0)
+        }
+
     }
 }
