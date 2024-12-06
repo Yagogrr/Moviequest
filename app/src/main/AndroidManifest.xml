@@ -16,6 +16,9 @@
             android:name=".user_activity"
             android:exported="false" />
         <activity
+            android:name=".buscar_peliculas"
+            android:exported="false" />
+        <activity
             android:name=".Register_activity"
             android:exported="false" />
         <activity
