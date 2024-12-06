@@ -11,8 +11,8 @@
     <!-- Imagen en la parte superior -->
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="429dp"
-        android:layout_height="196dp"
+        android:layout_width="430dp"
+        android:layout_height="238dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:background="#00FFFFFF"
         android:paddingRight="10dp"
-        android:paddingLeft="5dp"
+        android:paddingLeft="15dp"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp"
         app:layout_constraintEnd_toStartOf="@id/lastNameInputLayout"
@@ -43,7 +43,7 @@
         android:id="@+id/textViewnomUsuari"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:paddingLeft="5dp"
+        android:paddingLeft="15dp"
         app:layout_constraintStart_toStartOf="@+id/firstNameInputLayout"
         app:layout_constraintTop_toBottomOf="@+id/firstNameInputLayout"
         android:text="@string/nom_d_usuari_hint"
@@ -55,7 +55,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
-        android:paddingRight="5dp"
+        android:paddingRight="15dp"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp"
         app:layout_constraintTop_toBottomOf="@id/imageView2"
@@ -74,7 +74,7 @@
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
-        android:paddingRight="5dp"
+        android:paddingRight="15dp"
         app:layout_constraintStart_toStartOf="@+id/lastNameInputLayout"
         app:layout_constraintTop_toBottomOf="@+id/lastNameInputLayout"
         android:text="@string/cognoms_d_usuari_hint"
@@ -87,7 +87,7 @@
         android:layout_height="wrap_content"
         android:background="#00FFFFFF"
         android:paddingRight="10dp"
-        android:paddingLeft="5dp"
+        android:paddingLeft="15dp"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp"
         app:layout_constraintEnd_toEndOf="@id/firstNameInputLayout"
@@ -105,7 +105,7 @@
         android:id="@+id/textViewnombirthday"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:paddingLeft="5dp"
+        android:paddingLeft="15dp"
         app:layout_constraintStart_toStartOf="@+id/birthday"
         app:layout_constraintTop_toBottomOf="@+id/birthday"
         android:text="@string/data_d_aniversari_hint"
@@ -117,7 +117,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
-        android:paddingRight="5dp"
+        android:paddingRight="15dp"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp"
         app:layout_constraintTop_toBottomOf="@id/textViewcognoms"
@@ -127,7 +127,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingRight="5dp"
+            android:paddingRight="15dp"
             android:background="@drawable/rounded_background"
             android:hint="@string/n_mero_de_tel_fon_example"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -137,7 +137,7 @@
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
-        android:paddingRight="5dp"
+        android:paddingRight="15dp"
         app:layout_constraintStart_toStartOf="@+id/phoneNumber"
         app:layout_constraintTop_toBottomOf="@+id/phoneNumber"
         android:text="(+34) 672435678"
@@ -147,8 +147,8 @@
         android:id="@+id/username"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp"
         app:layout_constraintTop_toBottomOf="@id/textViewnombirthday"
@@ -158,7 +158,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingRight="5dp"
+            android:paddingRight="15dp"
             android:background="@drawable/rounded_background"
             android:hint="@string/user123_example"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -167,8 +167,8 @@
         android:id="@+id/textViewusername"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingRight="5dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
         app:layout_constraintStart_toStartOf="@+id/username"
         app:layout_constraintTop_toBottomOf="@+id/username"
         android:text="@string/username_hint"
@@ -178,8 +178,8 @@
         android:id="@+id/gmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp"
         app:layout_constraintTop_toBottomOf="@id/textViewusername"
@@ -189,7 +189,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingRight="5dp"
+            android:paddingRight="15dp"
             android:background="@drawable/rounded_background"
             android:hint="@string/exemple_gmail_com_example"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -198,8 +198,8 @@
         android:id="@+id/textViewgmail"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingRight="5dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
         app:layout_constraintStart_toStartOf="@+id/username"
         app:layout_constraintTop_toBottomOf="@+id/gmail"
         android:text="@string/gmail_hint"
@@ -209,8 +209,8 @@
         android:id="@+id/pw1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp"
         app:layout_constraintTop_toBottomOf="@id/textViewgmail"
@@ -220,7 +220,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingRight="5dp"
+            android:paddingRight="15dp"
             android:background="@drawable/rounded_background"
             android:hint="1234"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -229,8 +229,8 @@
         android:id="@+id/textViewpw1"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingRight="5dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
         app:layout_constraintStart_toStartOf="@+id/username"
         app:layout_constraintTop_toBottomOf="@+id/pw1"
         android:text="@string/contrasenya_hint"
@@ -240,8 +240,8 @@
         android:id="@+id/pw2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp"
         app:layout_constraintTop_toBottomOf="@id/textViewpw1"
@@ -251,7 +251,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingRight="5dp"
+            android:paddingRight="15dp"
             android:background="@drawable/rounded_background"
             android:hint="1234"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -260,12 +260,37 @@
         android:id="@+id/textViewpw2"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingRight="5dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
         app:layout_constraintStart_toStartOf="@+id/username"
         app:layout_constraintTop_toBottomOf="@+id/pw2"
         android:text="@string/confirmar_contrasenya_hint"
         android:textColor="#FFFFFF" />
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="50dp"
+        android:text="@string/iniciar_sessi_text"
+        android:textColor="#FFFFFF"
+        app:layout_constraintTop_toBottomOf="@id/textViewpw2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/username"
+        app:layout_constraintHorizontal_chainStyle="packed"/>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Sortir"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="50dp"
+        app:layout_constraintTop_toBottomOf="@id/textViewpw2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/pw2"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
