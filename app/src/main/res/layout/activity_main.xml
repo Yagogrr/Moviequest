@@ -44,6 +44,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
+        android:fontFamily="@font/montserrat"
         android:text="@string/nom_d_usuari"
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="@id/textNomInput"
