@@ -17,4 +17,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="iniciar_sessi_text">Iniciar sessió</string>
+    <string name="nom_d_usuari">Nom d\'usuari</string>
+    <string name="nom">Nom</string>
+    <string name="contrasenya">Contrasenya</string>
 </resources>
