@@ -9,14 +9,32 @@
     android:background="#000000"
     tools:context=".MainActivity">
 
+    <!-- Guía horizontal para el margen superior del logo -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_top_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_begin="10dp"
+        />
+
+    <!-- Guía horizontal inferior para anclar el último elemento -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_bottom_buttons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_end="10dp"
+        />
+
+    <!-- Logo con ancho porcentual -->
     <ImageView
         android:id="@+id/logo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/textNomInput"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintWidth_percent="0.9"
         app:srcCompat="@drawable/logo" />
 
@@ -24,18 +42,17 @@
         android:id="@+id/textNomInput"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="64dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.8"
+        app:layout_constraintTop_toBottomOf="@id/logo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/logo">
+        app:layout_constraintEnd_toEndOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textNom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
             android:hint="@string/nom"
+            android:inputType="text"
             android:background="@drawable/rounded_background"
             android:textSize="18sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -44,23 +61,22 @@
         android:id="@+id/textNomVista"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/montserrat"
         android:text="@string/nom_d_usuari"
+        android:fontFamily="@font/montserrat"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/textNomInput"
         app:layout_constraintStart_toStartOf="@id/textNomInput"
-        app:layout_constraintTop_toBottomOf="@id/textNomInput" />
+        app:layout_constraintEnd_toEndOf="@id/textNomInput" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/contrasenyaInput"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginHorizontal="64dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.8"
+        app:layout_constraintTop_toBottomOf="@id/textNomVista"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textNomVista">
+        app:layout_constraintEnd_toEndOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/contrasenya"
@@ -76,22 +92,21 @@
         android:id="@+id/textView2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="@string/contrasenya_minus"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/contrasenyaInput"
         app:layout_constraintStart_toStartOf="@id/contrasenyaInput"
-        app:layout_constraintTop_toBottomOf="@id/contrasenyaInput" />
+        app:layout_constraintEnd_toEndOf="@id/contrasenyaInput" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/gmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginHorizontal="64dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.8"
+        app:layout_constraintTop_toBottomOf="@id/textView2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView2">
+        app:layout_constraintEnd_toEndOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/gmail2"
@@ -107,65 +122,58 @@
         android:id="@+id/textView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="@string/gmail_minus"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/gmail"
         app:layout_constraintStart_toStartOf="@id/gmail"
-        app:layout_constraintTop_toBottomOf="@id/gmail" />
+        app:layout_constraintEnd_toEndOf="@id/gmail" />
 
     <TextView
         android:id="@+id/oblidat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="120dp"
         android:text="@string/has_oblidat_la_contrasenya_c"
         android:textColor="@color/md_theme_primary"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@id/textView"
-        app:layout_constraintTop_toBottomOf="@id/textView" />
+        app:layout_constraintTop_toBottomOf="@id/textView"
+        app:layout_constraintStart_toStartOf="@id/textView" />
 
+    <!-- Contenedor para los botones: se puede formar una cadena horizontal -->
     <Button
         android:id="@+id/button1"
-        android:layout_width="120dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:text="@string/registre"
         android:textColor="#FFFFFF"
         android:textSize="10sp"
+        app:layout_constraintWidth_percent="0.25"
         app:layout_constraintTop_toBottomOf="@id/oblidat"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/button2"
-        app:layout_constraintHorizontal_chainStyle="spread" />
+        app:layout_constraintEnd_toStartOf="@id/button2" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="120dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:text="@string/accedir"
         android:textColor="#FFFFFF"
         android:textSize="10sp"
+        app:layout_constraintWidth_percent="0.25"
         app:layout_constraintTop_toBottomOf="@id/oblidat"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/button1"
         app:layout_constraintEnd_toStartOf="@id/button3" />
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="120dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:text="@string/sortir"
         android:textColor="#FFFFFF"
         android:textSize="10sp"
+        app:layout_constraintWidth_percent="0.25"
         app:layout_constraintTop_toBottomOf="@id/oblidat"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/button2"
         app:layout_constraintEnd_toEndOf="parent" />
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>
-
