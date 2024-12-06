@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -8,28 +9,31 @@
     android:background="#000000"
     tools:context=".Register_activity">
 
-
+    <!-- Logo ImageView -->
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="430dp"
-        android:layout_height="238dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="16:9"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:scaleType="fitCenter"
         app:srcCompat="@drawable/logo" />
 
+    <!-- First Name Input -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/firstNameInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#00FFFFFF"
-        android:paddingRight="10dp"
-        android:paddingLeft="15dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="10dp"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp"
-        app:layout_constraintEnd_toStartOf="@id/lastNameInputLayout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView2">
+        app:layout_constraintTop_toBottomOf="@id/imageView2"
+        app:layout_constraintEnd_toStartOf="@id/lastNameInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -40,25 +44,25 @@
 
     <TextView
         android:id="@+id/textViewnomUsuari"
-        android:layout_width="180dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="15dp"
-        app:layout_constraintStart_toStartOf="@+id/firstNameInputLayout"
-        app:layout_constraintTop_toBottomOf="@+id/firstNameInputLayout"
+        android:paddingStart="15dp"
         android:text="@string/nom_d_usuari_hint"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="@+id/firstNameInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/firstNameInputLayout" />
 
-
+    <!-- Last Name Input -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/lastNameInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingRight="15dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="15dp"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp"
-        app:layout_constraintTop_toBottomOf="@id/imageView2"
         app:layout_constraintStart_toEndOf="@id/firstNameInputLayout"
+        app:layout_constraintTop_toBottomOf="@id/imageView2"
         app:layout_constraintEnd_toEndOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -70,28 +74,28 @@
 
     <TextView
         android:id="@+id/textViewcognoms"
-        android:layout_width="180dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingRight="15dp"
-        app:layout_constraintStart_toStartOf="@+id/lastNameInputLayout"
-        app:layout_constraintTop_toBottomOf="@+id/lastNameInputLayout"
+        android:paddingStart="10dp"
+        android:paddingEnd="15dp"
         android:text="@string/cognoms_d_usuari_hint"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="@+id/lastNameInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/lastNameInputLayout" />
 
-
+    <!-- Birthday Input -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/birthday"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#00FFFFFF"
-        android:paddingRight="10dp"
-        android:paddingLeft="15dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="10dp"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp"
-        app:layout_constraintEnd_toEndOf="@id/firstNameInputLayout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewnomUsuari">
+        app:layout_constraintTop_toBottomOf="@id/textViewnomUsuari"
+        app:layout_constraintEnd_toEndOf="@id/firstNameInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -102,21 +106,21 @@
 
     <TextView
         android:id="@+id/textViewnombirthday"
-        android:layout_width="180dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="15dp"
-        app:layout_constraintStart_toStartOf="@+id/birthday"
-        app:layout_constraintTop_toBottomOf="@+id/birthday"
+        android:paddingStart="15dp"
         android:text="@string/data_d_aniversari_hint"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="@+id/birthday"
+        app:layout_constraintTop_toBottomOf="@+id/birthday" />
 
-
+    <!-- Phone Number Input -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/phoneNumber"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingRight="15dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="15dp"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp"
         app:layout_constraintTop_toBottomOf="@id/textViewcognoms"
@@ -126,28 +130,27 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingRight="15dp"
             android:background="@drawable/rounded_background"
             android:hint="@string/n_mero_de_tel_fon_example"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/textViewtelefon"
-        android:layout_width="180dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingRight="15dp"
-        app:layout_constraintStart_toStartOf="@+id/phoneNumber"
-        app:layout_constraintTop_toBottomOf="@+id/phoneNumber"
+        android:paddingStart="10dp"
         android:text="(+34) 672435678"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="@+id/phoneNumber"
+        app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
 
+    <!-- Username Input -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/username"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp"
         app:layout_constraintTop_toBottomOf="@id/textViewnombirthday"
@@ -157,28 +160,27 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingRight="15dp"
             android:background="@drawable/rounded_background"
             android:hint="@string/user123_example"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/textViewusername"
-        android:layout_width="180dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        app:layout_constraintStart_toStartOf="@+id/username"
-        app:layout_constraintTop_toBottomOf="@+id/username"
+        android:paddingStart="15dp"
         android:text="@string/username_hint"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="@+id/username"
+        app:layout_constraintTop_toBottomOf="@+id/username" />
 
+    <!-- Gmail Input -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/gmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp"
         app:layout_constraintTop_toBottomOf="@id/textViewusername"
@@ -188,28 +190,27 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingRight="15dp"
             android:background="@drawable/rounded_background"
             android:hint="@string/exemple_gmail_com_example"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/textViewgmail"
-        android:layout_width="180dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        app:layout_constraintStart_toStartOf="@+id/username"
-        app:layout_constraintTop_toBottomOf="@+id/gmail"
+        android:paddingStart="15dp"
         android:text="@string/gmail_hint"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="@+id/username"
+        app:layout_constraintTop_toBottomOf="@+id/gmail" />
 
+    <!-- Password Input -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/pw1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp"
         app:layout_constraintTop_toBottomOf="@id/textViewgmail"
@@ -219,28 +220,27 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingRight="15dp"
             android:background="@drawable/rounded_background"
             android:hint="1234"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/textViewpw1"
-        android:layout_width="180dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        app:layout_constraintStart_toStartOf="@+id/username"
-        app:layout_constraintTop_toBottomOf="@+id/pw1"
+        android:paddingStart="15dp"
         android:text="@string/contrasenya_hint"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="@+id/username"
+        app:layout_constraintTop_toBottomOf="@+id/pw1" />
 
+    <!-- Confirm Password Input -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/pw2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp"
         app:layout_constraintTop_toBottomOf="@id/textViewpw1"
@@ -250,46 +250,48 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingRight="15dp"
             android:background="@drawable/rounded_background"
             android:hint="1234"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/textViewpw2"
-        android:layout_width="180dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        app:layout_constraintStart_toStartOf="@+id/username"
-        app:layout_constraintTop_toBottomOf="@+id/pw2"
+        android:paddingStart="15dp"
         android:text="@string/confirmar_contrasenya_hint"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="@+id/username"
+        app:layout_constraintTop_toBottomOf="@+id/pw2" />
+
+    <!-- Buttons -->
     <Button
         android:id="@+id/iniciSessio"
-        android:layout_width="160dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="40dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:layout_marginLeft="20dp"
         android:text="@string/iniciar_sessi_text"
         android:textColor="#FFFFFF"
         app:layout_constraintTop_toBottomOf="@id/textViewpw2"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@id/username"
+        app:layout_constraintStart_toStartOf="@+id/username"
         app:layout_constraintHorizontal_chainStyle="packed"/>
 
     <Button
         android:id="@+id/sortir"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:layout_marginRight="20dp"
         android:text="Sortir"
         android:textColor="#FFFFFF"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="40dp"
         app:layout_constraintTop_toBottomOf="@id/textViewpw2"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/pw2"/>
-
-
+        app:layout_constraintEnd_toEndOf="@+id/pw2"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
