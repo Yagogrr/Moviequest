@@ -1,6 +1,8 @@
 package com.example.moviequest
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -16,5 +18,17 @@ class Register_activity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val sortir: Button = findViewById(R.id.sortir)
+        sortir.setOnClickListener{
+            finish()
+            System.exit(0)
+        }
+
+        val iniciSessio: Button = findViewById(R.id.iniciSessio)
+        iniciSessio.setOnClickListener{
+            var intent = Intent(this,MainActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }

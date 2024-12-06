@@ -23,7 +23,7 @@
             android:layout_weight="1"
             android:layout_gravity="center"
             android:src="@drawable/controller"
-            android:contentDescription="Controller Icon"
+            android:contentDescription="@string/controller_icon"
             android:clickable="true"
             android:focusable="true" />
 
@@ -34,7 +34,7 @@
             android:layout_weight="1"
             android:layout_gravity="center"
             android:src="@drawable/party"
-            android:contentDescription="Party Icon"
+            android:contentDescription="@string/party_icon"
             android:clickable="true"
             android:focusable="true" />
 
@@ -45,7 +45,7 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:src="@drawable/house"
-            android:contentDescription="House Icon"
+            android:contentDescription="@string/house_icon"
             android:clickable="true"
             android:focusable="true" />
 
@@ -56,7 +56,7 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:src="@drawable/search_footer"
-            android:contentDescription="Search Icon"
+            android:contentDescription="@string/search_icon"
             android:clickable="true" />
 
         <ImageView
@@ -66,10 +66,9 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:src="@drawable/user"
-            android:contentDescription="User Icon"
+            android:contentDescription="@string/user_icon"
             android:clickable="true"
             android:focusable="true"/>
-
 
     </LinearLayout>
 </FrameLayout>

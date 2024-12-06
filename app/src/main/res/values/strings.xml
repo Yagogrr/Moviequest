@@ -20,4 +20,25 @@
     <string name="nom_d_usuari">Nom d\'usuari</string>
     <string name="nom">Nom</string>
     <string name="contrasenya">Contrasenya</string>
+    <string name="nom_cognom">NOM COGNOM</string>
+    <string name="gmail">GMAIL</string>
+    <string name="tel_fon">TELÈFON</string>
+    <string name="has_oblidat_la_contrasenya">HAS OBLIDAT LA CONTRASENYA?</string>
+    <string name="an_lisi">ANÀLISI</string>
+    <string name="busca_una_pel_l_cula">Busca una pel·lícula...</string>
+    <string name="millor_valorades">Millor valorades</string>
+    <string name="top_10">TOP 10</string>
+    <string name="misteri">Misteri</string>
+    <string name="contrasenya_minus">Contrasenya</string>
+    <string name="gmail_minus">Gmail</string>
+    <string name="has_oblidat_la_contrasenya_c">Has oblidat la contrasenya?</string>
+    <string name="registre">REGISTRE</string>
+    <string name="accedir">ACCEDIR</string>
+    <string name="sortir">SORTIR</string>
+    <string name="pel_l_cules_que_m_s_t_han_agradat">Pel·lícules que més t\'han agradat:</string>
+    <string name="controller_icon">Controller Icon</string>
+    <string name="party_icon">Party Icon</string>
+    <string name="house_icon">House Icon</string>
+    <string name="search_icon">Search Icon</string>
+    <string name="user_icon">User Icon</string>
 </resources>
