@@ -120,12 +120,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:fontFamily="@font/montserrat"
         android:text="@string/pel_l_cules_que_m_s_t_han_agradat"
         android:textColor="#FFFFFF"
         android:textSize="26sp"
-        android:fontFamily="sans-serif"
-        app:layout_constraintTop_toBottomOf="@id/analysis_title"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/analysis_title" />
 
     <HorizontalScrollView
         android:id="@+id/movies_scroll_view"
