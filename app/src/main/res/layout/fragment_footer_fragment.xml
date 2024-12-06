@@ -22,7 +22,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_gravity="center"
-            android:src="@drawable/controller" />
+            android:src="@drawable/controller"
+            android:contentDescription="Controller Icon"
+            android:clickable="true"
+            android:focusable="true" />
 
         <ImageView
             android:id="@+id/party"
@@ -30,7 +33,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_gravity="center"
-            android:src="@drawable/party" />
+            android:src="@drawable/party"
+            android:contentDescription="Party Icon"
+            android:clickable="true"
+            android:focusable="true" />
 
         <ImageView
             android:id="@+id/house"
@@ -38,7 +44,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:src="@drawable/house" />
+            android:src="@drawable/house"
+            android:contentDescription="House Icon"
+            android:clickable="true"
+            android:focusable="true" />
 
         <ImageView
             android:id="@+id/search"
@@ -46,7 +55,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:src="@drawable/search" />
+            android:src="@drawable/search_footer"
+            android:contentDescription="Search Icon"
+            android:clickable="true"
+            android:focusable="true" />
 
         <ImageView
             android:id="@+id/user"
@@ -54,7 +66,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:src="@drawable/user" />
+            android:src="@drawable/user"
+            android:contentDescription="User Icon"
+            android:clickable="true"
+            android:focusable="true" />
 
     </LinearLayout>
 </FrameLayout>
