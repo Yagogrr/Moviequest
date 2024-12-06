@@ -57,8 +57,7 @@
             android:layout_weight="1"
             android:src="@drawable/search_footer"
             android:contentDescription="Search Icon"
-            android:clickable="true"
-            android:focusable="true" />
+            android:clickable="true" />
 
         <ImageView
             android:id="@+id/user"
@@ -69,7 +68,8 @@
             android:src="@drawable/user"
             android:contentDescription="User Icon"
             android:clickable="true"
-            android:focusable="true" />
+            android:focusable="true"/>
+
 
     </LinearLayout>
 </FrameLayout>
