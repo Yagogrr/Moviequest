@@ -5,14 +5,13 @@
     android:background="#000000">
 
     <!-- Profile Icon -->
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/profile_icon"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="20dp"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="30dp"
         android:src="@drawable/profile_image"
-        android:background="#D7C9FF"
         android:scaleType="centerInside"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,10 +20,10 @@
     <!-- Theme Toggle Button -->
     <ImageButton
         android:id="@+id/theme_toggle"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
         android:background="@drawable/shutter_island"
         android:contentDescription="Toggle Theme"
         app:layout_constraintTop_toTopOf="parent"
@@ -33,9 +32,9 @@
     <!-- Info Button -->
     <ImageButton
         android:id="@+id/info_button"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="10dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/shutter_island"
         android:contentDescription="Information"
         app:layout_constraintTop_toTopOf="@id/theme_toggle"
@@ -46,12 +45,12 @@
         android:id="@+id/user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:text="NOM    COGNOM"
         android:textColor="#FFFFFF"
-        android:textSize="18sp"
+        android:textSize="24sp"
         android:fontFamily="sans-serif-light"
-        android:letterSpacing="0.2"
+        android:letterSpacing="0.3"
         app:layout_constraintTop_toBottomOf="@id/profile_icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -60,10 +59,10 @@
         android:id="@+id/user_gmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:text="GMAIL"
         android:textColor="#FFFFFF"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:fontFamily="sans-serif-light"
         app:layout_constraintTop_toBottomOf="@id/user_name"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,10 +72,10 @@
         android:id="@+id/user_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:text="TELÈFON"
         android:textColor="#FFFFFF"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:fontFamily="sans-serif-light"
         app:layout_constraintTop_toBottomOf="@id/user_gmail"
         app:layout_constraintStart_toStartOf="parent"
@@ -87,12 +86,12 @@
         android:id="@+id/forgot_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:text="HAS OBLIDAT LA CONTRASENYA?"
         android:textColor="#888888"
-        android:textSize="14sp"
+        android:textSize="18sp"
         android:fontFamily="sans-serif-light"
-        android:letterSpacing="0.1"
+        android:letterSpacing="0.2"
         app:layout_constraintTop_toBottomOf="@id/user_phone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -102,20 +101,20 @@
         android:id="@+id/analysis_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:text="ANÀLISI"
         android:textColor="#FFFFFF"
-        android:textSize="18sp"
+        android:textSize="24sp"
         android:fontFamily="sans-serif"
-        android:letterSpacing="0.1"
+        android:letterSpacing="0.2"
         app:layout_constraintTop_toBottomOf="@id/forgot_password"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="15dp"
         android:background="#888888"
         app:layout_constraintTop_toBottomOf="@id/analysis_title"
         app:layout_constraintStart_toStartOf="parent"
@@ -126,10 +125,10 @@
         android:id="@+id/movies_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:text="Pel·lícules que més t'han agradat:"
         android:textColor="#FFFFFF"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:fontFamily="sans-serif-light"
         app:layout_constraintTop_toBottomOf="@id/analysis_title"
         app:layout_constraintStart_toStartOf="parent" />
@@ -138,7 +137,7 @@
         android:id="@+id/movies_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintTop_toBottomOf="@id/movies_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -150,29 +149,29 @@
 
             <ImageView
                 android:id="@+id/movie_1"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginEnd="10dp"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_marginEnd="15dp"
                 android:src="@drawable/shutter_island" />
 
             <ImageView
                 android:id="@+id/movie_2"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginEnd="10dp"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_marginEnd="15dp"
                 android:src="@drawable/fight_club" />
 
             <ImageView
                 android:id="@+id/movie_3"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginEnd="10dp"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_marginEnd="15dp"
                 android:src="@drawable/shawshank_redemption" />
 
             <ImageView
                 android:id="@+id/movie_4"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
                 android:src="@drawable/abierto_hasta_el_amanecer" />
 
         </LinearLayout>
