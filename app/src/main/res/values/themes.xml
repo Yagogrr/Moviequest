@@ -49,6 +49,11 @@
         <item name="colorSurfaceContainerHighest">@color/md_theme_surfaceContainerHighest</item>
 
     </style>
-
+    <style name = "Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/cardview_dark_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>
+        <item name="windowSplashScreenAnimationDuration">300</item>
+        <item name="postSplashScreenTheme">@style/Base.Theme.MovieQuest</item>
+    </style>
     <style name="Theme.MovieQuest" parent="Base.Theme.MovieQuest" />
 </resources>
