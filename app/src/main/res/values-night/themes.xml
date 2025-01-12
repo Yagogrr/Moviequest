@@ -3,4 +3,6 @@
     <style name="Base.Theme.MovieQuest" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="fontFamily"></item>
     </style>
+
+    <color name="black">#000000</color>
 </resources>
