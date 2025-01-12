@@ -16,10 +16,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        screenSplashStart.setKeepOnScreenCondition{ true }
-        val intent = Intent(this, DetailActivity::class.java)
-        startActivity(intent)
-        finish()
+        screenSplashStart.setKeepOnScreenCondition{ false }
+
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
