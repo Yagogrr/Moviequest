@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:scaleType="fitCenter"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/logomovies" />
 
     <!-- First Name Input -->
     <com.google.android.material.textfield.TextInputLayout
