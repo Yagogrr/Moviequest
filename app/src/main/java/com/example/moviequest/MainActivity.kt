@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
             var intent = Intent(this,buscar_peliculas::class.java)
             startActivity(intent)
         }
+
         var sortir : Button = findViewById(R.id.button3)
         sortir.setOnClickListener{
             finish()

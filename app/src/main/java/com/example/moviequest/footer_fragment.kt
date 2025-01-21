@@ -35,6 +35,12 @@ class footer_fragment : Fragment() {
             startActivity(intent)
         }
 
+        // Intent to partie
+        party.setOnClickListener {
+            val intent = Intent(requireActivity(), parties_global::class.java)
+            startActivity(intent)
+        }
+
         return view
     }
 }
