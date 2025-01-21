@@ -9,11 +9,13 @@
         <item
             android:id="@+id/nav_friend"
             android:title="Friend"
-            android:icon="@drawable/friend_icon"/>
+            android:icon="@drawable/friend_icon"
+            android:textFontWeight="1000"/>
         <item
             android:id="@+id/nav_info"
             android:title="Info"
-            android:icon="@drawable/info_icon"/>
+            android:icon="@drawable/info_icon"
+            android:textFontWeight="1000"/>
     </group>
 
 </menu>

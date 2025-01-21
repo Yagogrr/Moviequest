@@ -10,13 +10,14 @@
     <ImageView
         android:layout_width="175dp"
         android:layout_height="150dp"
-        android:src="@drawable/logoredondo" />
+        android:src="@drawable/logo" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="25sp"
         android:text="@string/barra_de_navegacio"
         android:textColor="@color/cardview_light_background"
-        android:textSize="25sp" />
+        android:textFontWeight="1000"
+        android:textSize="20sp" />
 
 </LinearLayout>
