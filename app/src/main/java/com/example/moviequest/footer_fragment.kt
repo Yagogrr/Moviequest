@@ -22,13 +22,9 @@ class footer_fragment : Fragment() {
 
         val bottomNav = view.findViewById<BottomNavigationView>(R.id.bottom_navigation)
 
-        // Usando el nuevo método no deprecado
         bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.house -> {
-                    if (requireActivity() !is MainActivity) {
-                        startActivity(Intent(requireActivity(), MainActivity::class.java))
-                    }
                     true
                 }
 
