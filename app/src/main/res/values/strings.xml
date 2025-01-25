@@ -45,4 +45,9 @@
     <string name="terror">Terror</string>
     <string name="comedia">Comèdia</string>
     <string name="selecciona_g_neres">Selecciona gèneres</string>
+    <string name="controller">Controller</string>
+    <string name="party">Party</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="profile">Profile</string>
 </resources>

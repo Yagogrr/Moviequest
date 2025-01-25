@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/controller"
+        android:title="@string/controller"
+        android:icon="@drawable/controller"/>
+
+    <item
+        android:id="@+id/party"
+        android:title="@string/party"
+        android:icon="@drawable/party"/>
+
+    <item
+        android:id="@+id/house"
+        android:title="@string/home"
+        android:icon="@drawable/house"/>
+
+    <item
+        android:id="@+id/search"
+        android:title="@string/search"
+        android:icon="@drawable/search_footer"/>
+
+    <item
+        android:id="@+id/user"
+        android:title="@string/profile"
+        android:icon="@drawable/user"/>
+</menu>

@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class footer_fragment : Fragment() {
 
@@ -14,27 +14,46 @@ class footer_fragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_footer_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_footer_fragment, container, false)
+    }
 
-        // ImageView references
-        val controller: ImageView = view.findViewById(R.id.controller)
-        val party: ImageView = view.findViewById(R.id.party)
-        val house: ImageView = view.findViewById(R.id.house)
-        val search: ImageView = view.findViewById(R.id.search)
-        val user: ImageView = view.findViewById(R.id.user)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        // Intent to buscar_peliculas
-        search.setOnClickListener {
-            val intent = Intent(requireActivity(), buscar_peliculas::class.java)
-            startActivity(intent)
+        val bottomNav = view.findViewById<BottomNavigationView>(R.id.bottom_navigation)
+
+        // Usando el nuevo método no deprecado
+        bottomNav.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.house -> {
+                    if (requireActivity() !is MainActivity) {
+                        startActivity(Intent(requireActivity(), MainActivity::class.java))
+                    }
+                    true
+                }
+
+                R.id.search -> {
+                    startActivity(Intent(requireActivity(), buscar_peliculas::class.java))
+                    true
+                }
+
+                R.id.user -> {
+                    startActivity(Intent(requireActivity(), user_activity::class.java))
+                    true
+                }
+
+                R.id.controller -> {
+                    // Lógica para controller
+                    true
+                }
+
+                R.id.party -> {
+                    // Lógica para party
+                    true
+                }
+
+                else -> false
+            }
         }
-
-        // Intent to user_activity
-        user.setOnClickListener {
-            val intent = Intent(requireActivity(), user_activity::class.java)
-            startActivity(intent)
-        }
-
-        return view
     }
 }
