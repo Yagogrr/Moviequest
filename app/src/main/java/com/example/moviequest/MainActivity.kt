@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        //Thread.sleep(1000)
+
         screenSplashStart.setKeepOnScreenCondition{ false }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
             var intent = Intent(this,buscar_peliculas::class.java)
             startActivity(intent)
         }
+
         var sortir : Button = findViewById(R.id.button3)
         sortir.setOnClickListener{
             finish()
