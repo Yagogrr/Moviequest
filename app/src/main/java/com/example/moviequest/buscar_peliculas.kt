@@ -1,6 +1,9 @@
 package com.example.moviequest
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -9,12 +12,29 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviequest.adapter.MovieAdapter
 
-class buscar_peliculas : AppCompatActivity() {
+class buscar_peliculas : AppCompatActivity(), GenresBottomSheet.GenreSelectionListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_buscar_peliculas)
         initRecyclerViews()
+
+
+        findViewById<Button>(R.id.menuIcon).setOnClickListener {
+            val bottomSheet = GenresBottomSheet()
+            bottomSheet.setGenreSelectionListener(this)
+            bottomSheet.show(supportFragmentManager, bottomSheet.tag)
+        }
+    }
+
+    override fun onGenresSelected(selectedGenres: List<String>) {
+        // Manejar los géneros seleccionados
+        if (selectedGenres.isNotEmpty()) {
+            val genresText = selectedGenres.joinToString(", ")
+            Toast.makeText(this, "Géneros seleccionados: $genresText", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, "No se seleccionaron géneros", Toast.LENGTH_SHORT).show()
+        }
     }
 
     fun initRecyclerViews(){
