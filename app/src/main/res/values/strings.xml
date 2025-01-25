@@ -42,4 +42,7 @@
     <string name="search_icon">Search Icon</string>
     <string name="user_icon">User Icon</string>
     <string name="barra_de_navegacio">Barra de navegació</string>
+    <string name="terror">Terror</string>
+    <string name="comedia">Comèdia</string>
+    <string name="selecciona_g_neres">Selecciona gèneres</string>
 </resources>
