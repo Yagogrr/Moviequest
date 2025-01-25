@@ -33,7 +33,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_gravity="center"
-                android:src="@drawable/baseline_dehaze_24"
+                android:background="@drawable/baseline_dehaze_24"
                 android:contentDescription="Menu Icon" />
 
             <EditText

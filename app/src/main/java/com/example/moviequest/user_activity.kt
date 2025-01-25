@@ -57,7 +57,23 @@ class user_activity : AppCompatActivity() {
         val navigationView: NavigationView = findViewById(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.nav_info -> showInfoToast()
+                R.id.nav_info -> Toast.makeText(
+                    this,
+                    "Aquesta aplicació està dissenyada per als apassionats del cinema.",
+                    Toast.LENGTH_LONG
+                ).show()
+
+                R.id.nav_partie -> Toast.makeText(
+                    this,
+                    "Aqui tens un video de com funcionen les parties!",
+                    Toast.LENGTH_LONG
+                ).show()
+
+                R.id.nav_friend -> Toast.makeText(
+                    this,
+                    "Aqui tens un video de com agregar amics.",
+                    Toast.LENGTH_LONG
+                ).show()
             }
             drawerLayout.closeDrawer(GravityCompat.START)
             true
@@ -114,13 +130,6 @@ class user_activity : AppCompatActivity() {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
-    private fun showInfoToast() {
-        Toast.makeText(
-            this,
-            "Aquesta aplicació està dissenyada per als apassionats del cinema.",
-            Toast.LENGTH_LONG
-        ).show()
-    }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
