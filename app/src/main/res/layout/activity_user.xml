@@ -11,6 +11,16 @@
         android:layout_height="match_parent"
         android:background="#000000">
 
+        <!-- Theme Toggle Button -->
+        <ImageButton
+            android:id="@+id/theme_toggle"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/toggle_dark"
+            android:contentDescription="Toggle Theme"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="16dp"/>
         <!-- Botón para abrir el NavigationView -->
         <ImageButton
             android:id="@+id/open_nav_button"

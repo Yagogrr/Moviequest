@@ -37,7 +37,7 @@ class footer_fragment : Fragment() {
 
         // Intent to partie
         party.setOnClickListener {
-            val intent = Intent(requireActivity(), parties_global::class.java)
+            val intent = Intent(requireActivity(), Partiesglobal::class.java)
             startActivity(intent)
         }
 

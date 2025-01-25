@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <item
+            android:id="@+id/part_create"
+            android:title="Crear Partie"/>
+        <item
+            android:id="@+id/part_delete"
+            android:title="Eliminar partie"/>
+
+</menu>
