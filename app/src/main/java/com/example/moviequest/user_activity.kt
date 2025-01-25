@@ -1,6 +1,7 @@
 package com.example.moviequest
 
 import android.os.Bundle
+import android.util.Log
 import android.view.ContextMenu
 import android.view.ContextMenu.ContextMenuInfo
 import android.view.Menu
@@ -28,6 +29,11 @@ class user_activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_user)
+
+        // Recuperar el estado del tema si es que existe
+        if (savedInstanceState != null) {
+            isDarkMode = savedInstanceState.getBoolean("isDarkMode", false)
+        }
 
         initRecyclerView()
         setupNavigationDrawer()
@@ -60,6 +66,7 @@ class user_activity : AppCompatActivity() {
 
     private fun setupThemeToggle() {
         val themeToggle: ImageView = findViewById(R.id.theme_toggle)
+        // Establecer la imagen inicial según el tema
         themeToggle.setImageResource(
             if (isDarkMode) R.drawable.toggle_dark
             else R.drawable.toggle_sun
@@ -67,7 +74,10 @@ class user_activity : AppCompatActivity() {
 
         themeToggle.setOnClickListener {
             isDarkMode = !isDarkMode
+            Log.d("Theme", "isDarkMode: $isDarkMode") // Verificar el estado de isDarkMode
             applyTheme(isDarkMode)
+
+            // Cambiar la imagen del toggle según el tema
             themeToggle.setImageResource(
                 if (isDarkMode) R.drawable.toggle_dark
                 else R.drawable.toggle_sun

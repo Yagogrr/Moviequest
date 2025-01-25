@@ -16,7 +16,7 @@
             android:id="@+id/theme_toggle"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/toggle_dark"
+            android:background="@drawable/toggle_sun"
             android:contentDescription="Toggle Theme"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
