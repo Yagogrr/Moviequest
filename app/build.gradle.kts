@@ -57,4 +57,7 @@ dependencies {
 
 // (Opcional, si usas el interceptor LoggingInterceptor de OkHttp para depuración)
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.3") // o la versión más reciente
+
+    implementation("com.github.bumptech.glide:glide:4.12.0") // o la versión más reciente
+    annotationProcessor("com.github.bumptech.glide:compiler:4.12.0") // si es necesario para el procesamiento de anotaciones
 }

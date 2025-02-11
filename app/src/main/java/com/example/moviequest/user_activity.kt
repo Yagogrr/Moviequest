@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.ContextMenu
 import android.view.ContextMenu.ContextMenuInfo
-import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageButton
@@ -19,6 +18,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviequest.adapter.MovieAdapter
 import com.google.android.material.navigation.NavigationView
+import androidx.lifecycle.lifecycleScope // Importa lifecycleScope
+import kotlinx.coroutines.launch // Importa launch
 
 class user_activity : AppCompatActivity() {
 
@@ -35,15 +36,39 @@ class user_activity : AppCompatActivity() {
             isDarkMode = savedInstanceState.getBoolean("isDarkMode", false)
         }
 
-        initRecyclerView()
         setupNavigationDrawer()
         setupThemeToggle()
+        loadMovies() // Carga las películas desde la API
     }
 
-    private fun initRecyclerView() {
+
+    private fun loadMovies() {
+        lifecycleScope.launch {
+            try {
+                val response = MovieAPI.API().listMovies()
+                if (response.isSuccessful) {
+                    val movies = response.body() ?: emptyList()
+                    initRecyclerView(movies) // Inicializa el RecyclerView con las películas de la API
+                } else {
+                    showErrorToast("Error al cargar películas: ${response.code()}")
+                    initRecyclerView(emptyList()) // Inicializa con lista vacía en caso de error
+                }
+            } catch (e: Exception) {
+                showErrorToast("Error al cargar películas: ${e.message}")
+                initRecyclerView(emptyList()) // Inicializa con lista vacía en caso de error
+            }
+        }
+    }
+
+    private fun showErrorToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+    }
+
+
+    private fun initRecyclerView(movieList: List<Movie>) {
         val rvUser = findViewById<RecyclerView>(R.id.userRecycler)
         rvUser.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        rvUser.adapter = MovieAdapter(MovieProvider.movieList)
+        rvUser.adapter = MovieAdapter(movieList) // Usa la lista de películas proporcionada
     }
 
     private fun setupNavigationDrawer() {
