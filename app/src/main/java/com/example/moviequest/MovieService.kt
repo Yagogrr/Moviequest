@@ -16,7 +16,7 @@ import javax.net.ssl.X509TrustManager
 
 
 interface MovieService {
-    @GET("movies/")
+    @GET("peliculas/")
     suspend fun listMovies(): Response<List<Movie>>
 }
 
@@ -34,7 +34,7 @@ class MovieAPI {
                     .create()
                 mAPI = Retrofit.Builder()
                     .addConverterFactory(GsonConverterFactory.create(gsondateformat))
-                    .baseUrl("https://3.85.179.9")
+                    .baseUrl("https://13.216.198.223")
                     .client(client)
                     .build()
                     .create(MovieService::class.java)
