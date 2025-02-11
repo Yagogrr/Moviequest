@@ -20,7 +20,7 @@ interface MovieService {
     suspend fun listMovies(): Response<List<Movie>>
 }
 
-// 3. MovieAPI class
+
 class MovieAPI {
     companion object {
         private var mAPI: MovieService? = null
