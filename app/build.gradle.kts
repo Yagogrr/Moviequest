@@ -49,4 +49,12 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation("com.squareup.retrofit2:retrofit:2.9.0") // o la versión más reciente
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0") // o la versión más reciente
+    implementation("com.squareup.okhttp3:okhttp:4.9.3") // o la versión más reciente
+    implementation("com.google.code.gson:gson:2.8.6") // o la versión más reciente
+
+// (Opcional, si usas el interceptor LoggingInterceptor de OkHttp para depuración)
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.3") // o la versión más reciente
 }
