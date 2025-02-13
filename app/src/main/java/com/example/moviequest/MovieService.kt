@@ -16,7 +16,7 @@ import javax.net.ssl.X509TrustManager
 
 
 interface MovieService {
-    @GET("peliculas/")
+    @GET("/peliculas")
     suspend fun listMovies(): Response<List<Movie>>
 }
 
