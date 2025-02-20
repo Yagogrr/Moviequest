@@ -50,4 +50,6 @@
     <string name="home">Home</string>
     <string name="search">Search</string>
     <string name="profile">Profile</string>
+    <string name="titol">Titol:</string>
+    <string name="descripci">Descripció:</string>
 </resources>
