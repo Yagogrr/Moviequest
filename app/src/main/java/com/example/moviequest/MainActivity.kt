@@ -3,11 +3,13 @@ package com.example.moviequest
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.moviequest.adapter.Usuario
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,6 +33,8 @@ class MainActivity : AppCompatActivity() {
         }
         var search: Button = findViewById(R.id.button2)
         search.setOnClickListener{
+            val usuario = application as Usuario
+            usuario.setDatosUsuario(1, "nom")
             var intent = Intent(this,buscar_peliculas::class.java)
             startActivity(intent)
         }
