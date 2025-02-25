@@ -37,11 +37,6 @@ class Partiesglobal : AppCompatActivity() {
                         mostrarPopupFormulario()
                         true
                     }
-
-                    R.id.part_delete ->{
-                        Toast.makeText(this@Partiesglobal, "Eliminar partie", Toast.LENGTH_LONG).show()
-                        true
-                    }
                     else ->{
                         false
                     }

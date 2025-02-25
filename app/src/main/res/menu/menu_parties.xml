@@ -4,8 +4,5 @@
         <item
             android:id="@+id/part_create"
             android:title="Crear Partie"/>
-        <item
-            android:id="@+id/part_delete"
-            android:title="Eliminar partie"/>
 
 </menu>
