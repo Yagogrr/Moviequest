@@ -22,7 +22,6 @@ class buscar_peliculas : AppCompatActivity(), GenresBottomSheet.GenreSelectionLi
             bottomSheet.setGenreSelectionListener(this)
             bottomSheet.show(supportFragmentManager, bottomSheet.tag)
         }
-
         loadMovies() // Carga las películas desde la API
     }
 
@@ -47,7 +46,6 @@ class buscar_peliculas : AppCompatActivity(), GenresBottomSheet.GenreSelectionLi
     private fun showErrorToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
-
 
     override fun onGenresSelected(selectedGenres: List<String>) {
         if (selectedGenres.isNotEmpty()) {

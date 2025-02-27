@@ -17,7 +17,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.moviequest.adapter.MovieAdapter
+import com.example.moviequest.adapter.PartieAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.coroutines.launch
 
 class Partiesglobal : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,6 +51,34 @@ class Partiesglobal : AppCompatActivity() {
             popupMenu.show();
 
         }
+    }
+
+    private fun loadParties() {
+        lifecycleScope.launch {
+            try {
+                val response = PartieAPI.API().listParties()
+                if (response.isSuccessful) {
+                    val parties = response.body() ?: emptyList()
+                    initRecyclerViews(parties) // Inicializa los RecyclerViews con las películas de la API
+                } else {
+                    showErrorToast("Error al cargar parties: ${response.code()}")
+                    initRecyclerViews(emptyList()) // Inicializa con listas vacías para evitar errores
+                }
+            } catch (e: Exception) {
+                showErrorToast("Error al cargar parties: ${e.message}")
+                initRecyclerViews(emptyList()) // Inicializa con listas vacías para evitar errores
+            }
+        }
+    }
+
+    fun initRecyclerViews(partieList: List<Partie>){
+        val rv_pt = findViewById<RecyclerView>(R.id.partiesRv)
+        rv_pt.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
+        rv_pt.adapter = PartieAdapter(partieList)
+    }
+
+    private fun showErrorToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 
     private fun mostrarPopupFormulario() {
