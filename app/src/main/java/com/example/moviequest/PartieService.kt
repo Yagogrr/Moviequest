@@ -16,7 +16,7 @@ import javax.net.ssl.X509TrustManager
 
 
 interface PartieService {
-    @GET("/parties")
+    @GET("/Partie")
     suspend fun listParties(): Response<List<Partie>>
 }
 

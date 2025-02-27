@@ -48,9 +48,11 @@ class Partiesglobal : AppCompatActivity() {
                     }
                 }
             }
-            popupMenu.show();
+            popupMenu.show()
 
         }
+
+        loadParties()
     }
 
     private fun loadParties() {
