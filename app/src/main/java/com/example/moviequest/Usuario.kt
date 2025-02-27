@@ -1,4 +1,4 @@
-package com.example.moviequest.adapter
+package com.example.moviequest
 
 import android.app.Application
 
