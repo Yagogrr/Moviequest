@@ -8,6 +8,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -25,7 +26,6 @@ class user_activity : AppCompatActivity() {
 
     private var isDarkMode = false
     private lateinit var drawerLayout: DrawerLayout
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -39,6 +39,14 @@ class user_activity : AppCompatActivity() {
         setupNavigationDrawer()
         setupThemeToggle()
         loadMovies() // Carga las películas desde la API
+        val usuario = application as Usuario
+        var gmail: TextView
+        gmail = findViewById(R.id.user_gmail)
+        gmail.setText(usuario.gmail)
+        var nom: TextView
+        nom = findViewById(R.id.user_name)
+        nom.setText(usuario.nom)
+
     }
 
 

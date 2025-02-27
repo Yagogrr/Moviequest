@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.moviequest.adapter.Usuario
+import com.google.android.material.textfield.TextInputEditText
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,10 +31,18 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, Register_activity::class.java)
             startActivity(intent)
         }
+        var nom: TextView
+        nom = findViewById(R.id.textNom)
+        var gmail: TextView
+        gmail = findViewById(R.id.gmail2)
+
+        val idText = findViewById<TextInputEditText>(R.id.textId).text.toString()
+        val id = idText.toIntOrNull() ?: 0
+
         var search: Button = findViewById(R.id.button2)
         search.setOnClickListener{
             val usuario = application as Usuario
-            usuario.setDatosUsuario(1, "nom")
+            usuario.setDatosUsuario(id.toString().toInt(),nom.text.toString(), gmail.text.toString())
             var intent = Intent(this,buscar_peliculas::class.java)
             startActivity(intent)
         }

@@ -54,4 +54,6 @@
     <string name="descripci">Descripció:</string>
     <string name="descripcionEjemplo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum malesuada convallis augue, ac euismod orci tincidunt nec. Aenean quis ultricies nisi, egestas ornare tellus. Suspendisse scelerisque mi eu placerat pharetra. Sed sit amet laoreet augue. Vestibulum ultrices lectus vel ex finibus, vitae ornare est iaculis. Curabitur eu dolor tincidunt justo dictum dictum euismod id ante. Vestibulum quis laoreet lacus. Nullam dignissim neque ut elit aliquam, eu sollicitudin elit euismod.</string>
     <string name="tituloEjemplo">Titulo de ejemplo</string>
+    <string name="Id">Id</string>
+    <string name="Id_Usuari">Id usuari</string>
 </resources>
