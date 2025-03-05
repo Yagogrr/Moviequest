@@ -75,7 +75,7 @@ class Partiesglobal : AppCompatActivity() {
 
     fun initRecyclerViews(partieList: List<Partie>){
         val rv_pt = findViewById<RecyclerView>(R.id.partiesRv)
-        rv_pt.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
+        //rv_pt.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
         rv_pt.adapter = PartieAdapter(partieList)
     }
 
@@ -85,7 +85,7 @@ class Partiesglobal : AppCompatActivity() {
 
     private fun mostrarPopupFormulario() {
         val builder = AlertDialog.Builder(this)
-        val inflater = LayoutInflater.from(this) // o getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val inflater = LayoutInflater.from(this)
         val dialogView = inflater.inflate(R.layout.popup_formulario, null)
         builder.setView(dialogView)
 
