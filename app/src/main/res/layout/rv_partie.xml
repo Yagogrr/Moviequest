@@ -24,8 +24,9 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/ivProyectorPartie"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" android:scaleType="centerCrop"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_gravity="center"
         android:src="@drawable/proyector"
         app:shapeAppearanceOverlay="@style/RoundedCornerShape"/>
 
