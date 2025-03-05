@@ -1,5 +1,6 @@
 package com.example.moviequest
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.ContextMenu
@@ -76,7 +77,14 @@ class user_activity : AppCompatActivity() {
     private fun initRecyclerView(movieList: List<Movie>) {
         val rvUser = findViewById<RecyclerView>(R.id.userRecycler)
         rvUser.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        rvUser.adapter = MovieAdapter(movieList) // Usa la lista de películas proporcionada
+        rvUser.adapter = MovieAdapter(movieList) { movie -> onMovieClicked(movie) } // Se pasa la función de clic
+    }
+
+    private fun onMovieClicked(movie: Movie) {
+        Toast.makeText(this, "Película seleccionada: ${movie.nombre}", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, pelicula_engran::class.java)
+        intent.putExtra("MOVIE_NOM", movie.nombre)
+        startActivity(intent)
     }
 
     private fun setupNavigationDrawer() {

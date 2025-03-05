@@ -1,5 +1,6 @@
 package com.example.moviequest
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
@@ -61,20 +62,24 @@ class buscar_peliculas : AppCompatActivity(), GenresBottomSheet.GenreSelectionLi
     }
 
     // Modifica initRecyclerViews para que acepte una lista de películas
-    fun initRecyclerViews(movieList: List<Movie>){
-        //millor valorades
+    fun initRecyclerViews(movieList: List<Movie>) {
         val rv_mv = findViewById<RecyclerView>(R.id.bestRatedRecycler)
-        rv_mv.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
-        rv_mv.adapter = MovieAdapter(movieList) // Usa la lista de películas proporcionada
+        rv_mv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        rv_mv.adapter = MovieAdapter(movieList) { movie -> onMovieClicked(movie) }
 
-        //top 10
         val rv_t10 = findViewById<RecyclerView>(R.id.top10Recycler)
-        rv_t10.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
-        rv_t10.adapter = MovieAdapter(movieList) // Usa la lista de películas proporcionada
+        rv_t10.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        rv_t10.adapter = MovieAdapter(movieList) { movie -> onMovieClicked(movie) }
 
-        //Misteri
         val rv_mt = findViewById<RecyclerView>(R.id.misteriRecycler)
-        rv_mt.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
-        rv_mt.adapter = MovieAdapter(movieList) // Usa la lista de películas proporcionada
+        rv_mt.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        rv_mt.adapter = MovieAdapter(movieList) { movie -> onMovieClicked(movie) }
+    }
+
+    private fun onMovieClicked(movie: Movie) {
+        Toast.makeText(this, "Película seleccionada: ${movie.nombre}", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, pelicula_engran::class.java)
+        intent.putExtra("MOVIE_NOM", movie.nombre)
+        startActivity(intent)
     }
 }
