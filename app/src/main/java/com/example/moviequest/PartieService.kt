@@ -5,7 +5,9 @@ import okhttp3.OkHttpClient
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import java.security.SecureRandom
 import java.security.cert.CertificateException
 import java.security.cert.X509Certificate
@@ -18,8 +20,17 @@ import javax.net.ssl.X509TrustManager
 interface PartieService {
     @GET("/Partie")
     suspend fun listParties(): Response<List<Partie>>
+
+    @POST("/Partie/crear")
+    suspend fun createPartie(@Body partieRequest: PartieRequest): Response<Partie>
 }
 
+// Clase de datos para representar la petición POST de creación de Partie
+data class PartieRequest(
+    val titulo: String,
+    val descripcion: String,
+    val idUsuario: Int?
+)
 
 class PartieAPI {
     companion object {
@@ -42,7 +53,14 @@ class PartieAPI {
             return mAPI!!
         }
     }
+
+    // Método para llamar al método POST createPartie desde otras clases
+    suspend fun createPartie(titulo: String, descripcion: String, userId: Int?): Response<Partie> {
+        val partieRequest = PartieRequest(titulo, descripcion, userId)
+        return API().createPartie(partieRequest)
+    }
 }
+
 
 // (Unsafe OkHttpClient - Keep this part if your API uses HTTPS with potential certificate issues,
 // but understand the security implications and consider removing for production if possible by fixing certificates)

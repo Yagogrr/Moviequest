@@ -23,6 +23,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.moviequest.adapter.MovieAdapter
 import com.example.moviequest.adapter.PartieAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class Partiesglobal : AppCompatActivity() {
@@ -94,11 +96,27 @@ class Partiesglobal : AppCompatActivity() {
 
         builder.setTitle("Formulario de Partie")
         builder.setPositiveButton("Enviar") { dialog, which ->
-            val nombre = editTextNombre.text.toString()
-            val email = editTextDescripcio.text.toString()
+            val titol = editTextNombre.text.toString()
+            val descripcio = editTextDescripcio.text.toString()
+            val usuari = application as Usuario
+            val userId = usuari.id
+            val partieAPI = PartieAPI()
+            CoroutineScope(Dispatchers.IO).launch {
+                try {
+                    val response = partieAPI.createPartie(titol, descripcio, userId)
 
-            val mensaje = "Nombre: $nombre, Email: $email"
-            Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
+                    if (response.isSuccessful) {
+                        val partieCreada = response.body()
+                        println("Partie creada exitosamente: $partieCreada")
+                    } else {
+                        println("Error al crear la partie. Código de error: ${response.code()}")
+                        println("Mensaje de error: ${response.errorBody()?.string()}")
+                    }
+                } catch (e: Exception) {
+                    println("Excepción al crear la partie: ${e.message}")
+                    e.printStackTrace()
+                }
+            }
 
             dialog.dismiss()
         }
