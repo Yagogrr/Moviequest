@@ -23,7 +23,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.moviequest.adapter.MovieAdapter
 import com.example.moviequest.adapter.PartieAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+
 class Partiesglobal : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +42,7 @@ class Partiesglobal : AppCompatActivity() {
             popupMenu.setOnMenuItemClickListener { menuItem ->
                 when(menuItem.itemId) {
                     R.id.part_create -> {
-                        mostrarPopupFormulario(null) // No hay 'partie' para crear
+                        mostrarPopupFormulario() // No hay 'partie' para crear
                         true
                     }
                     else -> {
@@ -48,6 +51,7 @@ class Partiesglobal : AppCompatActivity() {
                 }
             }
             popupMenu.show()
+
         }
 
         loadParties() // Cargar las parties desde la API
@@ -71,10 +75,11 @@ class Partiesglobal : AppCompatActivity() {
         }
     }
 
+
+
     private fun showErrorToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
-
     // Inicializa los RecyclerViews con las parties
     private fun initRecyclerViews(partieList: List<Partie>) {
         val rv_pt = findViewById<RecyclerView>(R.id.partiesRv)
@@ -125,9 +130,7 @@ class Partiesglobal : AppCompatActivity() {
             }
         }
     }
-
-    // Muestra el formulario (popup) para editar o mostrar los detalles de una 'partie'
-    private fun mostrarPopupFormulario(partie: Partie?) {
+    private fun mostrarPopupFormulario() {
         val builder = AlertDialog.Builder(this)
         val inflater = LayoutInflater.from(this)
         val dialogView = inflater.inflate(R.layout.popup_formulario, null)
@@ -135,20 +138,36 @@ class Partiesglobal : AppCompatActivity() {
 
         val editTextNombre = dialogView.findViewById<EditText>(R.id.editTextTitol)
         val editTextDescripcio = dialogView.findViewById<EditText>(R.id.editTextDescripcio)
-
+/*
         // Si 'partie' no es null, se llenan los campos con los valores actuales de la 'partie'
         if (partie != null) {
             editTextNombre.setText(partie.titulo)
             editTextDescripcio.setText(partie.descripcion)
         }
-
+*/
         builder.setTitle("Formulario de Partie")
         builder.setPositiveButton("Enviar") { dialog, which ->
-            val nombre = editTextNombre.text.toString()
-            val descripcion = editTextDescripcio.text.toString()
+            val titol = editTextNombre.text.toString()
+            val descripcio = editTextDescripcio.text.toString()
+            val usuari = application as Usuario
+            val userId = usuari.id
+            val partieAPI = PartieAPI()
+            CoroutineScope(Dispatchers.IO).launch {
+                try {
+                    val response = partieAPI.createPartie(titol, descripcio, userId)
 
-            val mensaje = "Nombre: $nombre, Descripción: $descripcion"
-            Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
+                    if (response.isSuccessful) {
+                        val partieCreada = response.body()
+                        println("Partie creada exitosamente: $partieCreada")
+                    } else {
+                        println("Error al crear la partie. Código de error: ${response.code()}")
+                        println("Mensaje de error: ${response.errorBody()?.string()}")
+                    }
+                } catch (e: Exception) {
+                    println("Excepción al crear la partie: ${e.message}")
+                    e.printStackTrace()
+                }
+            }
 
             dialog.dismiss()
         }
