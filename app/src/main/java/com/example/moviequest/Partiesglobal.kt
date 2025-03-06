@@ -1,4 +1,4 @@
-package com.example.moviequest;
+package com.example.moviequest
 
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -26,6 +26,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import androidx.recyclerview.widget.GridLayoutManager // Import GridLayoutManager
 
 class Partiesglobal : AppCompatActivity() {
 
@@ -83,7 +84,8 @@ class Partiesglobal : AppCompatActivity() {
     // Inicializa los RecyclerViews con las parties
     private fun initRecyclerViews(partieList: List<Partie>) {
         val rv_pt = findViewById<RecyclerView>(R.id.partiesRv)
-        rv_pt.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        // Configura GridLayoutManager con 2 columnas
+        rv_pt.layoutManager = GridLayoutManager(this, 2)
 
         // Pasar la función de clic largo al adapter
         rv_pt.adapter = PartieAdapter(partieList) { partie ->
@@ -138,13 +140,13 @@ class Partiesglobal : AppCompatActivity() {
 
         val editTextNombre = dialogView.findViewById<EditText>(R.id.editTextTitol)
         val editTextDescripcio = dialogView.findViewById<EditText>(R.id.editTextDescripcio)
-/*
-        // Si 'partie' no es null, se llenan los campos con los valores actuales de la 'partie'
-        if (partie != null) {
-            editTextNombre.setText(partie.titulo)
-            editTextDescripcio.setText(partie.descripcion)
-        }
-*/
+        /*
+                // Si 'partie' no es null, se llenan los campos con los valores actuales de la 'partie'
+                if (partie != null) {
+                    editTextNombre.setText(partie.titulo)
+                    editTextDescripcio.setText(partie.descripcion)
+                }
+        */
         builder.setTitle("Formulario de Partie")
         builder.setPositiveButton("Enviar") { dialog, which ->
             val titol = editTextNombre.text.toString()
