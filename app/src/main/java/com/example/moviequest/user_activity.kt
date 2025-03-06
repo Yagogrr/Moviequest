@@ -84,6 +84,8 @@ class user_activity : AppCompatActivity() {
         Toast.makeText(this, "Película seleccionada: ${movie.nombre}", Toast.LENGTH_SHORT).show()
         val intent = Intent(this, pelicula_engran::class.java)
         intent.putExtra("MOVIE_NOM", movie.nombre)
+        intent.putExtra("MOVIE_FOTO", movie.foto)
+        intent.putExtra("MOVIE_DESC", movie.descripcion)
         startActivity(intent)
     }
 

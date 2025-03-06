@@ -5,7 +5,9 @@ import okhttp3.OkHttpClient
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.DELETE
 import retrofit2.http.GET
+import retrofit2.http.Path
 import java.security.SecureRandom
 import java.security.cert.CertificateException
 import java.security.cert.X509Certificate
@@ -16,6 +18,10 @@ import javax.net.ssl.X509TrustManager
 
 
 interface PartieService {
+    @DELETE("/Partie/{id}")
+    suspend fun deletePartie(@Path("id") id: Int): Response<Unit>
+
+
     @GET("/Partie")
     suspend fun listParties(): Response<List<Partie>>
 }
