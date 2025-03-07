@@ -1,181 +1,97 @@
 package com.example.moviequest;
 
+import android.content.Intent
 import android.os.Bundle;
-import android.view.ContextMenu;
-import android.view.LayoutInflater
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText
-import android.widget.PopupMenu
+import android.widget.TextView
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviequest.adapter.MovieAdapter
-import com.example.moviequest.adapter.PartieAdapter
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class Filtres : AppCompatActivity() {
+
+    private var selectedGenre: String? = null
+    private var genreDisplayName: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_filtres)
 
-        val popButton = findViewById<FloatingActionButton>(R.id.btn_desplegable)
+        // Get the selected genre from the intent
+        selectedGenre = intent.getStringExtra("SELECTED_GENRE")
+        genreDisplayName = intent.getStringExtra("GENRE_DISPLAY_NAME")
 
-        popButton.setOnClickListener { view ->
-            val popupMenu = PopupMenu(this@Filtres, view)
-            popupMenu.inflate(R.menu.menu_parties)
+        // Update UI with the selected genre if needed
+        val titleTextView = findViewById<TextView>(R.id.genreTitle)
+        titleTextView?.text = genreDisplayName ?: "Todas las películas"
 
-            popupMenu.setOnMenuItemClickListener { menuItem ->
-                when(menuItem.itemId) {
-                    R.id.part_create -> {
-                        mostrarPopupFormulario()
-                        true
-                    }
-                    else -> {
-                        false
-                    }
-                }
-            }
-            popupMenu.show()
-
-        }
-
-        loadParties() // Cargar las parties desde la API
+        loadMoviesByGenre() // Load movies based on genre
     }
 
-    private fun loadParties() {
+    private fun loadMoviesByGenre() {
         lifecycleScope.launch {
             try {
-                val response = PartieAPI.API().listParties()
-                if (response.isSuccessful) {
-                    val parties = response.body() ?: emptyList()
-                    initRecyclerViews(parties) // Inicializa los RecyclerViews con las parties de la API
+                val response = if (selectedGenre != null) {
+                    // Call the new endpoint with the selected genre
+                    MovieAPI.API().getMoviesByGenre(selectedGenre!!)
                 } else {
-                    showErrorToast("Error al cargar parties: ${response.code()}")
-                    initRecyclerViews(emptyList()) // Inicializa con listas vacías para evitar errores
+                    // If no genre selected, get all movies
+                    MovieAPI.API().listMovies()
+                }
+
+                if (response.isSuccessful) {
+                    val movies = response.body() ?: emptyList()
+                    initRecyclerViews(movies)
+
+                    // Show user feedback about the number of movies found
+                    val message = if (movies.isEmpty()) {
+                        "No se encontraron películas para $genreDisplayName"
+                    } else {
+                        "${movies.size} películas encontradas para $genreDisplayName"
+                    }
+                    showInfoToast(message)
+                } else {
+                    showErrorToast("Error al cargar películas: ${response.code()}")
+                    initRecyclerViews(emptyList()) // Initialize with empty lists to avoid errors
                 }
             } catch (e: Exception) {
-                showErrorToast("Error al cargar parties: ${e.message}")
-                initRecyclerViews(emptyList()) // Inicializa con listas vacías para evitar errores
+                showErrorToast("Error al cargar películas: ${e.message}")
+                initRecyclerViews(emptyList()) // Initialize with empty lists to avoid errors
             }
         }
     }
-
-
 
     private fun showErrorToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
-    // Inicializa los RecyclerViews con las parties
-    private fun initRecyclerViews(partieList: List<Partie>) {
-        val rv_pt = findViewById<RecyclerView>(R.id.partiesRv)
-        rv_pt.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
-        // Pasar la función de clic largo al adapter
-        rv_pt.adapter = PartieAdapter(partieList) { partie ->
-            onPartieLongClicked(partie) // Llamar al handler cuando se mantiene pulsado
+    private fun showInfoToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    // Initialize RecyclerViews with the movies
+    private fun initRecyclerViews(movieList: List<Movie>) {
+        val generoRv = findViewById<RecyclerView>(R.id.generoRv)
+
+        // Use GridLayoutManager as specified in your XML
+        generoRv.layoutManager = GridLayoutManager(this, 2)
+
+        // Pass the movie list to the adapter with click handler
+        generoRv.adapter = MovieAdapter(movieList) { movie ->
+            onMovieClicked(movie)
         }
     }
 
-    // Acción que se ejecuta al mantener pulsado un ítem
-    private fun onPartieLongClicked(partie: Partie) {
-        // Crear un diálogo de confirmación
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Eliminar Partie")
-        builder.setMessage("¿Estás seguro de que deseas eliminar esta partie?")
-
-        // Acción al presionar "Sí"
-        builder.setPositiveButton("Sí") { dialog, which ->
-            // Eliminar la partie de la lista
-            deletePartie(partie)
-            dialog.dismiss() // Cerrar el diálogo
-        }
-
-        // Acción al presionar "No"
-        builder.setNegativeButton("No") { dialog, which ->
-            dialog.dismiss() // Cerrar el diálogo sin hacer nada
-        }
-
-        // Mostrar el diálogo
-        builder.create().show()
-    }
-
-    private fun deletePartie(partie: Partie) {
-        lifecycleScope.launch {
-            try {
-                val response = PartieAPI.API().deletePartie(partie.id) // Llamar a la API para eliminar la partie usando el id
-                if (response.isSuccessful) {
-                    // Si la eliminación fue exitosa, actualizamos la lista de parties
-                    loadParties()
-                    Toast.makeText(this@Filtres, "Partie eliminada", Toast.LENGTH_SHORT).show()
-                } else {
-                    showErrorToast("Error al eliminar la partie: ${response.code()}")
-                }
-            } catch (e: Exception) {
-                showErrorToast("Error al eliminar la partie: ${e.message}")
-            }
-        }
-    }
-    private fun mostrarPopupFormulario() {
-        val builder = AlertDialog.Builder(this)
-        val inflater = LayoutInflater.from(this)
-        val dialogView = inflater.inflate(R.layout.popup_formulario, null)
-        builder.setView(dialogView)
-
-        val editTextNombre = dialogView.findViewById<EditText>(R.id.editTextTitol)
-        val editTextDescripcio = dialogView.findViewById<EditText>(R.id.editTextDescripcio)
-/*
-        // Si 'partie' no es null, se llenan los campos con los valores actuales de la 'partie'
-        if (partie != null) {
-            editTextNombre.setText(partie.titulo)
-            editTextDescripcio.setText(partie.descripcion)
-        }
-*/
-        builder.setTitle("Formulario de Partie")
-        builder.setPositiveButton("Enviar") { dialog, which ->
-            val titol = editTextNombre.text.toString()
-            val descripcio = editTextDescripcio.text.toString()
-            val usuari = application as Usuario
-            val userId = usuari.id
-            val partieAPI = PartieAPI()
-            CoroutineScope(Dispatchers.IO).launch {
-                try {
-                    val response = partieAPI.createPartie(titol, descripcio, userId)
-
-                    if (response.isSuccessful) {
-                        val partieCreada = response.body()
-                        println("Partie creada exitosamente: $partieCreada")
-                    } else {
-                        println("Error al crear la partie. Código de error: ${response.code()}")
-                        println("Mensaje de error: ${response.errorBody()?.string()}")
-                    }
-                } catch (e: Exception) {
-                    println("Excepción al crear la partie: ${e.message}")
-                    e.printStackTrace()
-                }
-            }
-
-            dialog.dismiss()
-        }
-        builder.setNegativeButton("Cancelar") { dialog, which ->
-            dialog.dismiss()
-        }
-
-        val dialog = builder.create()
-        dialog.show()
+    // Handler for movie click events
+    private fun onMovieClicked(movie: Movie) {
+        Toast.makeText(this, "Película seleccionada: ${movie.nombre}", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, pelicula_engran::class.java)
+        intent.putExtra("MOVIE_NOM", movie.nombre)
+        intent.putExtra("MOVIE_FOTO", movie.foto)
+        intent.putExtra("MOVIE_DESC", movie.descripcion)
+        startActivity(intent)
     }
 }

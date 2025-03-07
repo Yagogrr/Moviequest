@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviequest.adapter.MovieAdapter
 import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 
 class buscar_peliculas : AppCompatActivity() {
@@ -24,44 +26,69 @@ class buscar_peliculas : AppCompatActivity() {
             bottomSheet.show(supportFragmentManager, bottomSheet.tag)
         }
 
-        loadMovies() // Carga las películas desde la API
+        loadMoviesByGenres() // Carga las películas por géneros desde la API
     }
 
-    private fun loadMovies() {
+    private fun loadMoviesByGenres() {
         lifecycleScope.launch {
             try {
-                val response = MovieAPI.API().listMovies()
-                if (response.isSuccessful) {
-                    val movies = response.body() ?: emptyList()
-                    initRecyclerViews(movies) // Inicializa los RecyclerViews con las películas de la API
-                } else {
-                    showErrorToast("Error al cargar películas: ${response.code()}")
-                    initRecyclerViews(emptyList()) // Inicializa con listas vacías para evitar errores
+                // Inicializar RecyclerViews con listas vacías primero para evitar NullPointerException
+                initEmptyRecyclerViews()
+
+                // Cargar datos para cada género en paralelo
+                val terrorMoviesDeferred = async { MovieAPI.API().getMoviesByGenre("terror") }
+                val accionMoviesDeferred = async { MovieAPI.API().getMoviesByGenre("accion") }
+                val animacionMoviesDeferred = async { MovieAPI.API().getMoviesByGenre("animacion") }
+
+                // Esperar a que todas las peticiones terminen
+                val responses = listOf(
+                    terrorMoviesDeferred,
+                    accionMoviesDeferred,
+                    animacionMoviesDeferred
+                ).awaitAll()
+
+                // Procesar las respuestas y actualizar las RecyclerViews
+                val terrorMovies = responses[0].body() ?: emptyList()
+                val accionMovies = responses[1].body() ?: emptyList()
+                val animacionMovies = responses[2].body() ?: emptyList()
+
+                // Actualizar cada RecyclerView con su lista de películas correspondiente
+                updateRecyclerView(findViewById(R.id.bestRatedRecycler), terrorMovies)
+                updateRecyclerView(findViewById(R.id.top10Recycler), accionMovies)
+                updateRecyclerView(findViewById(R.id.misteriRecycler), animacionMovies)
+
+                // Mostrar mensaje de éxito o error si alguna de las listas está vacía
+                if (terrorMovies.isEmpty() || accionMovies.isEmpty() || animacionMovies.isEmpty()) {
+                    showErrorToast("Algunas categorías no tienen películas disponibles")
                 }
+
             } catch (e: Exception) {
                 showErrorToast("Error al cargar películas: ${e.message}")
-                initRecyclerViews(emptyList()) // Inicializa con listas vacías para evitar errores
             }
         }
     }
 
-    private fun showErrorToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
-    }
-
-    // Modifica initRecyclerViews para que acepte una lista de películas
-    fun initRecyclerViews(movieList: List<Movie>) {
+    private fun initEmptyRecyclerViews() {
+        // Inicializar los RecyclerViews con listas vacías
         val rv_mv = findViewById<RecyclerView>(R.id.bestRatedRecycler)
         rv_mv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        rv_mv.adapter = MovieAdapter(movieList) { movie -> onMovieClicked(movie) }
+        rv_mv.adapter = MovieAdapter(emptyList()) { movie -> onMovieClicked(movie) }
 
         val rv_t10 = findViewById<RecyclerView>(R.id.top10Recycler)
         rv_t10.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        rv_t10.adapter = MovieAdapter(movieList) { movie -> onMovieClicked(movie) }
+        rv_t10.adapter = MovieAdapter(emptyList()) { movie -> onMovieClicked(movie) }
 
         val rv_mt = findViewById<RecyclerView>(R.id.misteriRecycler)
         rv_mt.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        rv_mt.adapter = MovieAdapter(movieList) { movie -> onMovieClicked(movie) }
+        rv_mt.adapter = MovieAdapter(emptyList()) { movie -> onMovieClicked(movie) }
+    }
+
+    private fun updateRecyclerView(recyclerView: RecyclerView, movies: List<Movie>) {
+        recyclerView.adapter = MovieAdapter(movies) { movie -> onMovieClicked(movie) }
+    }
+
+    private fun showErrorToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 
     private fun onMovieClicked(movie: Movie) {

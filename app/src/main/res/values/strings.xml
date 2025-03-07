@@ -59,4 +59,7 @@
     <string name="Id_Usuari">Id usuari</string>
     <string name="acci">Acció</string>
     <string name="dibuixos">Dibuixos</string>
+    <string name="TERROR">TERROR</string>
+    <string name="ACCIO">ACCIÓ</string>
+    <string name="ANIMACIO">ANIMACIÓ</string>
 </resources>

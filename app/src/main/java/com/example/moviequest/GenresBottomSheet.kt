@@ -33,13 +33,21 @@ class GenresBottomSheet : BottomSheetDialogFragment() {
         val btnAccio = view.findViewById<Button>(R.id.btnAccio)
         val btnDibuixos = view.findViewById<Button>(R.id.btnDibuixos)
 
+        // Mapeo de los botones a los valores de género para la API
+        val genreMapping = mapOf(
+            btnTerror to "terror",
+            btnComedia to "fantasia",
+            btnAccio to "accion",
+            btnDibuixos to "animacion"
+        )
+
         // Establecer listeners para cada botón de género
-        val buttons = listOf(btnTerror, btnComedia, btnAccio, btnDibuixos)
-        buttons.forEach { button ->
+        genreMapping.forEach { (button, apiGenre) ->
             button.setOnClickListener {
-                // Navegar a MainActivity con el género seleccionado
-                val intent = Intent(requireContext(), MainActivity::class.java)
-                intent.putExtra("SELECTED_GENRE", button.text.toString())
+                // Navegar a Filtres con el género seleccionado
+                val intent = Intent(requireContext(), Filtres::class.java)
+                intent.putExtra("SELECTED_GENRE", apiGenre)
+                intent.putExtra("GENRE_DISPLAY_NAME", button.text.toString())
                 startActivity(intent)
                 dismiss() // Cerrar el bottom sheet
             }
