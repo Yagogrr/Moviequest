@@ -24,7 +24,6 @@ interface MovieService {
 class MovieAPI {
     companion object {
         private var mAPI: MovieService? = null
-
         @Synchronized
         fun API(): MovieService {
             if (mAPI == null) {
@@ -44,11 +43,8 @@ class MovieAPI {
     }
 }
 
-// (Unsafe OkHttpClient - Keep this part if your API uses HTTPS with potential certificate issues,
-// but understand the security implications and consider removing for production if possible by fixing certificates)
 private fun getUnsafeOkHttpClient(): OkHttpClient {
     try {
-        // Create a trust manager that does not validate certificate chains
         val trustAllCerts = arrayOf<TrustManager>(object : X509TrustManager {
             @Throws(CertificateException::class)
             override fun checkClientTrusted(chain: Array<X509Certificate>, authType: String) {}
