@@ -9,20 +9,21 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviequest.adapter.MovieAdapter
-import androidx.lifecycle.lifecycleScope // Importa lifecycleScope
-import kotlinx.coroutines.launch // Importa launch
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 
-class buscar_peliculas : AppCompatActivity(), GenresBottomSheet.GenreSelectionListener {
+class buscar_peliculas : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_buscar_peliculas)
 
+        // Configurar el botón del menú para mostrar el bottom sheet
         findViewById<Button>(R.id.menuIcon).setOnClickListener {
             val bottomSheet = GenresBottomSheet()
-            bottomSheet.setGenreSelectionListener(this)
             bottomSheet.show(supportFragmentManager, bottomSheet.tag)
         }
+
         loadMovies() // Carga las películas desde la API
     }
 
@@ -46,19 +47,6 @@ class buscar_peliculas : AppCompatActivity(), GenresBottomSheet.GenreSelectionLi
 
     private fun showErrorToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
-    }
-
-    override fun onGenresSelected(selectedGenres: List<String>) {
-        if (selectedGenres.isNotEmpty()) {
-            val genresText = selectedGenres.joinToString(", ")
-            Toast.makeText(this, "Géneros seleccionados: $genresText", Toast.LENGTH_SHORT).show()
-            // Aquí podrías implementar la lógica para filtrar películas por géneros seleccionados (si la API lo permite)
-            // Por ahora, recargaremos todas las películas
-            loadMovies() // Vuelve a cargar todas las peliculas al seleccionar generos (ejemplo)
-        } else {
-            Toast.makeText(this, "No se seleccionaron géneros", Toast.LENGTH_SHORT).show()
-            loadMovies() // Vuelve a cargar todas las peliculas al deseleccionar generos (ejemplo)
-        }
     }
 
     // Modifica initRecyclerViews para que acepte una lista de películas

@@ -24,33 +24,33 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <CheckBox
-            android:id="@+id/checkAction"
+        <Button
+            android:id="@+id/btnTerror"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/terror"
-            android:padding="8dp"/>
+            android:layout_marginVertical="4dp"/>
 
-        <CheckBox
-            android:id="@+id/checkComedy"
+        <Button
+            android:id="@+id/btnComedia"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/comedia"
-            android:padding="8dp"/>
+            android:text="@string/fantasia"
+            android:layout_marginVertical="4dp"/>
 
-        <CheckBox
-            android:id="@+id/checkDrama"
+        <Button
+            android:id="@+id/btnAccio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Acció"
-            android:padding="8dp"/>
+            android:text="@string/acci"
+            android:layout_marginVertical="4dp"/>
 
-        <CheckBox
-            android:id="@+id/checkHorror"
+        <Button
+            android:id="@+id/btnDibuixos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Dibuixos"
-            android:padding="8dp"/>
+            android:text="@string/dibuixos"
+            android:layout_marginVertical="4dp"/>
 
         <!-- Agrega más géneros según necesites -->
 
@@ -60,7 +60,7 @@
         android:id="@+id/btnDone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Listo"
+        android:text="Cerrar"
         android:layout_marginTop="16dp"/>
 
 </LinearLayout>
