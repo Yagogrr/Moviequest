@@ -31,7 +31,7 @@ class Filtres : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_parties_global)
+        setContentView(R.layout.activity_filtres)
 
         val popButton = findViewById<FloatingActionButton>(R.id.btn_desplegable)
 
@@ -42,7 +42,7 @@ class Filtres : AppCompatActivity() {
             popupMenu.setOnMenuItemClickListener { menuItem ->
                 when(menuItem.itemId) {
                     R.id.part_create -> {
-                        mostrarPopupFormulario() // No hay 'partie' para crear
+                        mostrarPopupFormulario()
                         true
                     }
                     else -> {
