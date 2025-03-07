@@ -6,6 +6,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 import java.security.SecureRandom
 import java.security.cert.CertificateException
 import java.security.cert.X509Certificate
@@ -18,6 +19,9 @@ import javax.net.ssl.X509TrustManager
 interface MovieService {
     @GET("/peliculas")
     suspend fun listMovies(): Response<List<Movie>>
+
+    @GET("/peliculas/genero/{genero}")
+    suspend fun getMoviesByGenre(@Path("genero") genero: String): Response<List<Movie>>
 }
 
 

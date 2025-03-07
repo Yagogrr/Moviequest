@@ -20,6 +20,9 @@
             android:name=".pelicula_engran"
             android:exported="false" />
         <activity
+            android:name=".Filtres"
+            android:exported="false" />
+        <activity
             android:name=".Partiesglobal"
             android:exported="false" />
         <activity

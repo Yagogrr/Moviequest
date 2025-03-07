@@ -43,6 +43,7 @@
     <string name="user_icon">User Icon</string>
     <string name="barra_de_navegacio">Barra de navegació</string>
     <string name="terror">Terror</string>
+    <string name="fantasia">Fantasia</string>
     <string name="comedia">Comèdia</string>
     <string name="selecciona_g_neres">Selecciona gèneres</string>
     <string name="controller">Controller</string>
@@ -56,4 +57,9 @@
     <string name="tituloEjemplo">Titulo de ejemplo</string>
     <string name="Id">Id</string>
     <string name="Id_Usuari">Id usuari</string>
+    <string name="acci">Acció</string>
+    <string name="dibuixos">Dibuixos</string>
+    <string name="TERROR">TERROR</string>
+    <string name="ACCIO">ACCIÓ</string>
+    <string name="ANIMACIO">ANIMACIÓ</string>
 </resources>
