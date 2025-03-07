@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/black"
     android:id="@+id/main"
-    tools:context=".Partiesglobal">
+    tools:context=".Filtres">
 
     <!-- Search Bar -->
     <androidx.cardview.widget.CardView
