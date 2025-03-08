@@ -23,7 +23,7 @@ class footer_fragment : Fragment() {
 
         val bottomNav = view.findViewById<BottomNavigationView>(R.id.bottom_navigation)
 
-        // Set the selected item based on the current activity
+
         setSelectedNavItem(bottomNav)
 
         bottomNav.setOnItemSelectedListener { item ->
@@ -47,7 +47,7 @@ class footer_fragment : Fragment() {
                 }
 
                 R.id.controller -> {
-                    // Add your controller activity here if you have one
+
                     true
                 }
 
@@ -64,12 +64,12 @@ class footer_fragment : Fragment() {
     }
 
     private fun setSelectedNavItem(bottomNav: BottomNavigationView) {
-        // Determine the current activity and set the corresponding menu item as selected
+
         when (activity?.javaClass) {
             buscar_peliculas::class.java -> bottomNav.selectedItemId = R.id.search
             user_activity::class.java -> bottomNav.selectedItemId = R.id.user
             Partiesglobal::class.java -> bottomNav.selectedItemId = R.id.party
-            // Add other activities as needed
+
         }
     }
 }

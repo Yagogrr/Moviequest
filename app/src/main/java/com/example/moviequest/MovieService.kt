@@ -48,11 +48,10 @@ class MovieAPI {
     }
 }
 
-// (Unsafe OkHttpClient - Keep this part if your API uses HTTPS with potential certificate issues,
-// but understand the security implications and consider removing for production if possible by fixing certificates)
+
 private fun getUnsafeOkHttpClient(): OkHttpClient {
     try {
-        // Create a trust manager that does not validate certificate chains
+
         val trustAllCerts = arrayOf<TrustManager>(object : X509TrustManager {
             @Throws(CertificateException::class)
             override fun checkClientTrusted(chain: Array<X509Certificate>, authType: String) {}
@@ -65,10 +64,10 @@ private fun getUnsafeOkHttpClient(): OkHttpClient {
             }
         })
 
-        // Install the all-trusting trust manager
+
         val sslContext = SSLContext.getInstance("SSL")
         sslContext.init(null, trustAllCerts, SecureRandom())
-        // Create an ssl socket factory with our all-trusting manager
+
         val sslSocketFactory: SSLSocketFactory = sslContext.socketFactory
 
         val builder = OkHttpClient.Builder()

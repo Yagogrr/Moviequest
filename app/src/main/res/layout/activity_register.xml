@@ -9,7 +9,7 @@
     android:background="#000000"
     tools:context=".Register_activity">
 
-    <!-- Logo ImageView -->
+
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="0dp"
@@ -21,7 +21,7 @@
         android:scaleType="fitCenter"
         app:srcCompat="@drawable/logomovies" />
 
-    <!-- First Name Input -->
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/firstNameInputLayout"
         android:layout_width="0dp"
@@ -52,7 +52,7 @@
         app:layout_constraintStart_toStartOf="@+id/firstNameInputLayout"
         app:layout_constraintTop_toBottomOf="@+id/firstNameInputLayout" />
 
-    <!-- Last Name Input -->
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/lastNameInputLayout"
         android:layout_width="0dp"
@@ -83,7 +83,7 @@
         app:layout_constraintStart_toStartOf="@+id/lastNameInputLayout"
         app:layout_constraintTop_toBottomOf="@+id/lastNameInputLayout" />
 
-    <!-- Birthday Input -->
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/birthday"
         android:layout_width="0dp"
@@ -114,7 +114,7 @@
         app:layout_constraintStart_toStartOf="@+id/birthday"
         app:layout_constraintTop_toBottomOf="@+id/birthday" />
 
-    <!-- Phone Number Input -->
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/phoneNumber"
         android:layout_width="0dp"
@@ -144,7 +144,7 @@
         app:layout_constraintStart_toStartOf="@+id/phoneNumber"
         app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
 
-    <!-- Username Input -->
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/username"
         android:layout_width="0dp"
@@ -174,7 +174,7 @@
         app:layout_constraintStart_toStartOf="@+id/username"
         app:layout_constraintTop_toBottomOf="@+id/username" />
 
-    <!-- Gmail Input -->
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/gmail"
         android:layout_width="0dp"
@@ -204,7 +204,6 @@
         app:layout_constraintStart_toStartOf="@+id/username"
         app:layout_constraintTop_toBottomOf="@+id/gmail" />
 
-    <!-- Password Input -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/pw1"
         android:layout_width="0dp"
@@ -234,7 +233,7 @@
         app:layout_constraintStart_toStartOf="@+id/username"
         app:layout_constraintTop_toBottomOf="@+id/pw1" />
 
-    <!-- Confirm Password Input -->
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/pw2"
         android:layout_width="0dp"
@@ -264,7 +263,7 @@
         app:layout_constraintStart_toStartOf="@+id/username"
         app:layout_constraintTop_toBottomOf="@+id/pw2" />
 
-    <!-- Buttons -->
+
     <Button
         android:id="@+id/iniciSessio"
         android:layout_width="wrap_content"

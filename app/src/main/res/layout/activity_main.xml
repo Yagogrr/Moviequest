@@ -9,7 +9,7 @@
     android:background="#000000"
     tools:context=".MainActivity">
 
-    <!-- Guía horizontal para el margen superior del logo -->
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_top_logo"
         android:layout_width="wrap_content"
@@ -17,7 +17,7 @@
         app:layout_constraintGuide_begin="10dp"
         />
 
-    <!-- Guía horizontal inferior para anclar el último elemento -->
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_bottom_buttons"
         android:layout_width="wrap_content"
@@ -25,7 +25,7 @@
         app:layout_constraintGuide_end="10dp"
         />
 
-    <!-- Logo con ancho porcentual -->
+
     <ImageView
         android:id="@+id/logo"
         android:layout_width="358dp"
@@ -168,7 +168,7 @@
         app:layout_constraintTop_toBottomOf="@id/textView"
         app:layout_constraintStart_toStartOf="@id/textView" />
 
-    <!-- Contenedor para los botones: se puede formar una cadena horizontal -->
+
     <Button
         android:id="@+id/button1"
         android:layout_width="0dp"

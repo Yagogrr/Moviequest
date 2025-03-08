@@ -10,7 +10,7 @@ import com.example.moviequest.R
 
 class PartieAdapter(
     private val partieList: List<Partie>,
-    private val onPartieLongClicked: (Partie) -> Unit // Función de callback para el clic largo
+    private val onPartieLongClicked: (Partie) -> Unit
 ) : RecyclerView.Adapter<PartieAdapter.PartieViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PartieViewHolder {

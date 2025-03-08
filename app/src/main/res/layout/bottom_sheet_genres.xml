@@ -52,7 +52,7 @@
             android:text="@string/dibuixos"
             android:layout_marginVertical="4dp"/>
 
-        <!-- Agrega más géneros según necesites -->
+
 
     </LinearLayout>
 
