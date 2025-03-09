@@ -8,7 +8,7 @@
     android:id="@+id/main"
     tools:context=".Filtres">
 
-    <!-- Search Bar -->
+
     <androidx.cardview.widget.CardView
         android:id="@+id/searchBarCard"
         android:layout_width="0dp"
@@ -49,7 +49,7 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- Title -->
+
     <TextView
         android:id="@+id/genreTitle"
         android:layout_width="wrap_content"
@@ -62,7 +62,7 @@
         app:layout_constraintTop_toBottomOf="@id/searchBarCard"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <!-- Main Content -->
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/generoRv"
         android:layout_width="match_parent"
@@ -78,7 +78,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
 
-    <!-- Footer Fragment -->
+
     <fragment
         android:id="@+id/footerFragment"
         android:name="com.example.moviequest.footer_fragment"

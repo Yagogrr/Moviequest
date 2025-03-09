@@ -53,9 +53,9 @@ class buscar_peliculas : AppCompatActivity() {
                 val animacionMovies = responses[2].body() ?: emptyList()
 
                 // Actualizar cada RecyclerView con su lista de películas correspondiente
-                updateRecyclerView(findViewById(R.id.bestRatedRecycler), terrorMovies)
-                updateRecyclerView(findViewById(R.id.top10Recycler), accionMovies)
-                updateRecyclerView(findViewById(R.id.misteriRecycler), animacionMovies)
+                updateRecyclerView(findViewById(R.id.terrorRv), terrorMovies)
+                updateRecyclerView(findViewById(R.id.accioRv), accionMovies)
+                updateRecyclerView(findViewById(R.id.animacioRv), animacionMovies)
 
                 // Mostrar mensaje de éxito o error si alguna de las listas está vacía
                 if (terrorMovies.isEmpty() || accionMovies.isEmpty() || animacionMovies.isEmpty()) {
@@ -70,15 +70,15 @@ class buscar_peliculas : AppCompatActivity() {
 
     private fun initEmptyRecyclerViews() {
         // Inicializar los RecyclerViews con listas vacías
-        val rv_mv = findViewById<RecyclerView>(R.id.bestRatedRecycler)
+        val rv_mv = findViewById<RecyclerView>(R.id.terrorRv)
         rv_mv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         rv_mv.adapter = MovieAdapter(emptyList()) { movie -> onMovieClicked(movie) }
 
-        val rv_t10 = findViewById<RecyclerView>(R.id.top10Recycler)
+        val rv_t10 = findViewById<RecyclerView>(R.id.accioRv)
         rv_t10.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         rv_t10.adapter = MovieAdapter(emptyList()) { movie -> onMovieClicked(movie) }
 
-        val rv_mt = findViewById<RecyclerView>(R.id.misteriRecycler)
+        val rv_mt = findViewById<RecyclerView>(R.id.animacioRv)
         rv_mt.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         rv_mt.adapter = MovieAdapter(emptyList()) { movie -> onMovieClicked(movie) }
     }

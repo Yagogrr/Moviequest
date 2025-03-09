@@ -53,10 +53,7 @@ class GenresBottomSheet : BottomSheetDialogFragment() {
             }
         }
 
-        // Botón para cerrar el bottom sheet
-        view.findViewById<Button>(R.id.btnDone).setOnClickListener {
-            dismiss()
-        }
+
 
         return view
     }

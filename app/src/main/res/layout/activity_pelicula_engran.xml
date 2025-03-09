@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#000000">
 
-    <!-- ScrollView para permitir desplazamiento en caso de contenido largo -->
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -28,7 +28,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 tools:srcCompat="@tools:sample/avatars" />
 
-            <!-- TextView para la descripción de la película -->
+
             <TextView
                 android:id="@+id/tituloPelicula"
                 android:layout_width="wrap_content"
