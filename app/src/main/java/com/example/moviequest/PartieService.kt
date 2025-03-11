@@ -24,9 +24,10 @@ interface PartieService {
     @DELETE("/Partie/{id}")
     suspend fun deletePartie(@Path("id") id: Int): Response<Unit>
 
-    @PUT("/Partie/{id}")
+    @PUT("/Partie/modDes/{id}")
     suspend fun editPartie(@Path("id") id: Int,@Body descripcionUpdate: DescripcionUpdate
     ): Response<Unit>
+
     @GET("/Partie")
     suspend fun listParties(): Response<List<Partie>>
 
