@@ -51,5 +51,7 @@
             android:src="@drawable/proyector"
             app:shapeAppearanceOverlay="@style/RoundedCornerShape"/>
 
+
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>
