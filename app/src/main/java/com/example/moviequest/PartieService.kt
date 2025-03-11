@@ -10,6 +10,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import java.security.SecureRandom
 import java.security.cert.CertificateException
 import java.security.cert.X509Certificate
@@ -23,12 +24,15 @@ interface PartieService {
     @DELETE("/Partie/{id}")
     suspend fun deletePartie(@Path("id") id: Int): Response<Unit>
 
-
+    @PUT("/Partie/{id}")
+    suspend fun editPartie(@Path("id") id: Int,@Body descripcionUpdate: DescripcionUpdate
+    ): Response<Unit>
     @GET("/Partie")
     suspend fun listParties(): Response<List<Partie>>
 
     @POST("/Partie/crear")
     suspend fun createPartie(@Body partieRequest: PartieRequest): Response<Partie>
+
 }
 
 // Clase de datos para representar la petición POST de creación de Partie
