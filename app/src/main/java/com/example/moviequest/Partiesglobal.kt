@@ -76,8 +76,6 @@ class Partiesglobal : AppCompatActivity() {
         }
     }
 
-
-
     private fun showErrorToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
@@ -161,6 +159,7 @@ class Partiesglobal : AppCompatActivity() {
                     if (response.isSuccessful) {
                         val partieCreada = response.body()
                         println("Partie creada exitosamente: $partieCreada")
+                        loadParties()
                     } else {
                         println("Error al crear la partie. Código de error: ${response.code()}")
                         println("Mensaje de error: ${response.errorBody()?.string()}")
