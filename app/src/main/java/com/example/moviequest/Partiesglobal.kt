@@ -157,7 +157,7 @@ class Partiesglobal : AppCompatActivity() {
         builder.setMessage("Segur que vols eliminar la partie '${partie.titulo}'?")
 
         builder.setPositiveButton("Sí, eliminar") { dialog, _ ->
-            deletePartie(partie) // Llamar a la función de eliminación
+            deletePartie(partie)
             dialog.dismiss()
         }
 
@@ -204,6 +204,7 @@ class Partiesglobal : AppCompatActivity() {
 
                     if (response.isSuccessful) {
                         val partieCreada = response.body()
+                        loadParties()
                         println("Partie creada correctament: $partieCreada")
                     } else {
                         println("Error al crear la partie. Error: ${response.code()}")
