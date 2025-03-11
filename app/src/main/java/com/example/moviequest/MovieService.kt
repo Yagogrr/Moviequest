@@ -20,6 +20,10 @@ interface MovieService {
     @GET("/peliculas")
     suspend fun listMovies(): Response<List<Movie>>
 
+    @GET("/peliculas/{id}")
+    suspend fun getMovie(@Path("id") id: Int): Response<Movie>
+
+
     @GET("/peliculas/genero/{genero}")
     suspend fun getMoviesByGenre(@Path("genero") genero: String): Response<List<Movie>>
 }

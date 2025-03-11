@@ -27,7 +27,7 @@
             android:padding="8dp">
 
             <EditText
-                android:id="@+id/searchEditText"
+                android:id="@+id/searchEditTextPartie"
                 android:layout_width="0dp"
                 android:layout_height="31dp"
                 android:layout_marginStart="8dp"
@@ -40,7 +40,7 @@
                 android:textColorHint="#808080" />
 
             <ImageView
-                android:id="@+id/searchIcon"
+                android:id="@+id/searchIconPartie"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_gravity="center"

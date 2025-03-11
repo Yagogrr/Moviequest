@@ -3,6 +3,8 @@ package com.example.moviequest
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +15,7 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
+import retrofit2.Response
 
 class buscar_peliculas : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +30,34 @@ class buscar_peliculas : AppCompatActivity() {
         }
 
         loadMoviesByGenres() // Carga las películas por géneros desde la API
+        val buscarPeliBarra = findViewById<EditText>(R.id.searchEditText)
+        val buscarPeliBtn = findViewById<ImageView>(R.id.searchIcon)
+        buscarPeliBtn.setOnClickListener {
+            val textoABuscar = buscarPeliBarra.text.toString()
+
+            if (textoABuscar.isNotEmpty()) {
+                getMovie(textoABuscar.toInt())
+            } else {
+                Toast.makeText(this, "Por favor, introduce un texto para buscar", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+    }
+
+    private fun getMovie(id: Int) {
+        lifecycleScope.launch {
+            try {
+                val response : Response<Movie> = MovieAPI.API().getMovie(id) // Llamar a la API para coge la peli usando el id
+                if (response.isSuccessful) {
+                    val movie: Movie? = response.body()
+                    onMovieClicked(movie)
+                } else {
+                    showErrorToast("Error al buscar la peli: ${response.code()}")
+                }
+            } catch (e: Exception) {
+                showErrorToast("Error al buscar la peli: ${e.message}")
+            }
+        }
     }
 
     private fun loadMoviesByGenres() {
@@ -91,12 +122,17 @@ class buscar_peliculas : AppCompatActivity() {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 
-    private fun onMovieClicked(movie: Movie) {
-        Toast.makeText(this, "Película seleccionada: ${movie.nombre}", Toast.LENGTH_SHORT).show()
-        val intent = Intent(this, pelicula_engran::class.java)
-        intent.putExtra("MOVIE_NOM", movie.nombre)
-        intent.putExtra("MOVIE_FOTO", movie.foto)
-        intent.putExtra("MOVIE_DESC", movie.descripcion)
-        startActivity(intent)
+    private fun onMovieClicked(movie: Movie?) {
+        if (movie != null) {
+            Toast.makeText(this, "Película seleccionada: ${movie.nombre}", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, pelicula_engran::class.java)
+            intent.putExtra("MOVIE_NOM", movie.nombre)
+            intent.putExtra("MOVIE_FOTO", movie.foto)
+            intent.putExtra("MOVIE_DESC", movie.descripcion)
+            startActivity(intent)
+        } else {
+            // Manejar el caso cuando movie es nulo
+            Toast.makeText(this, "No se seleccionó ninguna película", Toast.LENGTH_SHORT).show()
+        }
     }
 }
