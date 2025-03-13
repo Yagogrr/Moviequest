@@ -103,20 +103,23 @@ class Partiesglobal : AppCompatActivity() {
             when (which) {
                 0 -> editarPartie(partie)
                 1 -> deletePartieWithConfirmation(partie)
+                2 -> editarNomPartie(partie)
             }
         }
-
         builder.show()
+    }
+    private fun editarNomPartie(partie : Partie){
+
     }
     private fun editarPartie(partie: Partie) {
         // Crear un EditText para ingresar la nueva descripción
         val input = EditText(this@Partiesglobal)
-        input.hint = "Ingrese la nueva descripción"
+        input.hint = "Introdueix la nova descripció"
 
         // Crear un AlertDialog con un campo de entrada
         val dialog = AlertDialog.Builder(this@Partiesglobal)
-            .setTitle("Editar descripción de la Partie")
-            .setMessage("Ingrese la nueva descripción de la Partie")
+            .setTitle("Editar descripció de la Partie")
+            .setMessage("Introdueix la nueva descripció de la Partie")
             .setView(input)
             .setPositiveButton("Aceptar") { dialog, which ->
                 val nuevaDescripcion = input.text.toString()
