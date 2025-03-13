@@ -36,7 +36,7 @@ class buscar_peliculas : AppCompatActivity() {
             val textoABuscar = buscarPeliBarra.text.toString()
 
             if (textoABuscar.isNotEmpty()) {
-                getMovie(textoABuscar.toInt())
+                getMovie(textoABuscar)
             } else {
                 Toast.makeText(this, "Por favor, introduce un texto para buscar", Toast.LENGTH_SHORT).show()
             }
@@ -44,10 +44,10 @@ class buscar_peliculas : AppCompatActivity() {
 
     }
 
-    private fun getMovie(id: Int) {
+    private fun getMovie(string: String) {
         lifecycleScope.launch {
             try {
-                val response : Response<Movie> = MovieAPI.API().getMovie(id) // Llamar a la API para coge la peli usando el id
+                val response : Response<Movie> = MovieAPI.API().getMovieInd(string) // Llamar a la API para coge la peli usando el id
                 if (response.isSuccessful) {
                     val movie: Movie? = response.body()
                     onMovieClicked(movie)

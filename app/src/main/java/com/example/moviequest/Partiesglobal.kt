@@ -27,6 +27,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import androidx.recyclerview.widget.GridLayoutManager // Import GridLayoutManager
+import kotlinx.coroutines.withContext
 
 class Partiesglobal : AppCompatActivity() {
 
@@ -93,34 +94,85 @@ class Partiesglobal : AppCompatActivity() {
 
     // Acción que se ejecuta al mantener pulsado un ítem
     private fun onPartieLongClicked(partie: Partie) {
-        // Crear un diálogo de confirmación
+        // Crear un diálogo con opciones
+        val options = arrayOf("Editar", "Eliminar")
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("Eliminar Partie")
-        builder.setMessage("¿Estás seguro de que deseas eliminar esta partie?")
+        builder.setTitle("Selecciona una opción")
 
-        // Acción al presionar "Sí"
-        builder.setPositiveButton("Sí") { dialog, which ->
-            // Eliminar la partie de la lista
-            deletePartie(partie)
-            dialog.dismiss() // Cerrar el diálogo
+        builder.setItems(options) { dialog, which ->
+            when (which) {
+                0 -> editarPartie(partie)
+                1 -> deletePartieWithConfirmation(partie)
+            }
         }
 
-        // Acción al presionar "No"
-        builder.setNegativeButton("No") { dialog, which ->
-            dialog.dismiss() // Cerrar el diálogo sin hacer nada
-        }
+        builder.show()
+    }
+    private fun editarPartie(partie: Partie) {
+        // Crear un EditText para ingresar la nueva descripción
+        val input = EditText(this@Partiesglobal)
+        input.hint = "Ingrese la nueva descripción"
+
+        // Crear un AlertDialog con un campo de entrada
+        val dialog = AlertDialog.Builder(this@Partiesglobal)
+            .setTitle("Editar descripción de la Partie")
+            .setMessage("Ingrese la nueva descripción de la Partie")
+            .setView(input)
+            .setPositiveButton("Aceptar") { dialog, which ->
+                val nuevaDescripcion = input.text.toString()
+
+                // Validar si la nueva descripción no está vacía
+                if (nuevaDescripcion.isNotBlank()) {
+                    // Crear un objeto DescripcionUpdate
+                    val descripcionUpdate = DescripcionUpdate(descripcion = nuevaDescripcion)
+
+                    // Llamar a la API con la nueva descripción
+                    CoroutineScope(Dispatchers.IO).launch {
+                        val response = PartieAPI.API().editPartie(partie.id, descripcionUpdate)
+
+                        withContext(Dispatchers.Main) {
+                            if (response.isSuccessful) {
+                                loadParties() // Recargar la lista de parties
+                                Toast.makeText(this@Partiesglobal, "Partie actualizada", Toast.LENGTH_SHORT).show()
+                            } else {
+                                showErrorToast("Error al actualizar la partie: ${response.code()}")
+                            }
+                        }
+                    }
+                } else {
+                    Toast.makeText(this@Partiesglobal, "La descripción no puede estar vacía", Toast.LENGTH_SHORT).show()
+                }
+            }
+            .setNegativeButton("Cancelar", null)
+            .create()
 
         // Mostrar el diálogo
-        builder.create().show()
+        dialog.show()
     }
 
+
+    private fun deletePartieWithConfirmation(partie: Partie) {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Confirmación de eliminación")
+        builder.setMessage("Segur que vols eliminar la partie '${partie.titulo}'?")
+
+        builder.setPositiveButton("Sí, eliminar") { dialog, _ ->
+            deletePartie(partie)
+            dialog.dismiss()
+        }
+
+        builder.setNegativeButton("Cancel·lar") { dialog, _ ->
+            dialog.dismiss()
+        }
+
+        builder.show()
+    }
     private fun deletePartie(partie: Partie) {
         lifecycleScope.launch {
             try {
-                val response = PartieAPI.API().deletePartie(partie.id) // Llamar a la API para eliminar la partie usando el id
+                val response = PartieAPI.API().deletePartie(partie.id) // Llamar a la API para eliminar la partie
                 if (response.isSuccessful) {
-                    // Si la eliminación fue exitosa, actualizamos la lista de parties
-                    loadParties()
+                    loadParties() // Recargar la lista de parties
                     Toast.makeText(this@Partiesglobal, "Partie eliminada", Toast.LENGTH_SHORT).show()
                 } else {
                     showErrorToast("Error al eliminar la partie: ${response.code()}")
@@ -138,14 +190,8 @@ class Partiesglobal : AppCompatActivity() {
 
         val editTextNombre = dialogView.findViewById<EditText>(R.id.editTextTitol)
         val editTextDescripcio = dialogView.findViewById<EditText>(R.id.editTextDescripcio)
-        /*
-                // Si 'partie' no es null, se llenan los campos con los valores actuales de la 'partie'
-                if (partie != null) {
-                    editTextNombre.setText(partie.titulo)
-                    editTextDescripcio.setText(partie.descripcion)
-                }
-        */
-        builder.setTitle("Formulario de Partie")
+
+        builder.setTitle("Formulari de Partie")
         builder.setPositiveButton("Enviar") { dialog, which ->
             val titol = editTextNombre.text.toString()
             val descripcio = editTextDescripcio.text.toString()
@@ -158,21 +204,21 @@ class Partiesglobal : AppCompatActivity() {
 
                     if (response.isSuccessful) {
                         val partieCreada = response.body()
-                        println("Partie creada exitosamente: $partieCreada")
                         loadParties()
+                        println("Partie creada correctament: $partieCreada")
                     } else {
-                        println("Error al crear la partie. Código de error: ${response.code()}")
-                        println("Mensaje de error: ${response.errorBody()?.string()}")
+                        println("Error al crear la partie. Error: ${response.code()}")
+                        println("Missatge d'error: ${response.errorBody()?.string()}")
                     }
                 } catch (e: Exception) {
-                    println("Excepción al crear la partie: ${e.message}")
+                    println("Error: ${e.message}")
                     e.printStackTrace()
                 }
             }
 
             dialog.dismiss()
         }
-        builder.setNegativeButton("Cancelar") { dialog, which ->
+        builder.setNegativeButton("Cancel·lar") { dialog, which ->
             dialog.dismiss()
         }
 
