@@ -1,57 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:padding="16dp">
 
-    <LinearLayout
+    <!-- Icono de lápiz en la parte superior derecha -->
+    <ImageView
+        android:id="@+id/iconoLapiz"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_edit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/white"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Nombre partie -->
+    <TextView
+        android:id="@+id/textViewNombre"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="Nombre partie"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iconoLapiz" />
+
+    <!-- Línea divisoria -->
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="#CCCCCC"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNombre" />
+
+    <!-- Descripción -->
+    <TextView
+        android:id="@+id/textViewDescripcion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="start"
+        android:text="Descripción del elemento"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+    <!-- Imagen -->
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivProyectorPartie"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/proyector"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDescripcion"
+        app:shapeAppearanceOverlay="@style/RoundedCornerShape" />
+
+    <!-- Fragmento añadido -->
+    <fragment
+        android:id="@+id/footerFragment"
+        android:name="com.example.moviequest.footer_fragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="16dp"
-        android:background="#000000"
-        android:gravity="center_horizontal">
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <!-- Nombre partie -->
-        <TextView
-            android:id="@+id/textViewNombre"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Nombre partie"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="#FFFFFF"
-            android:gravity="center"
-            android:layout_marginBottom="8dp" />
-
-        <!-- Línea divisoria -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#CCCCCC"
-            android:layout_marginBottom="8dp" />
-
-        <!-- Descripción -->
-        <TextView
-            android:id="@+id/textViewDescripcion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Descripción del elemento"
-            android:textSize="14sp"
-            android:textColor="#FFFFFF"
-            android:gravity="start"
-            android:layout_marginBottom="12dp" />
-
-        <!-- Imagen -->
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ivProyectorPartie"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-            android:layout_gravity="center"
-            android:src="@drawable/proyector"
-            app:shapeAppearanceOverlay="@style/RoundedCornerShape"/>
-
-
-
-    </LinearLayout>
-</androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
