@@ -62,7 +62,10 @@ class Partiesglobal : AppCompatActivity() {
     private fun loadParties() {
         lifecycleScope.launch {
             try {
-                val response = PartieAPI.API().listParties()
+                val usuario = application as Usuario
+                val userId = Integer.parseInt(usuario.id.toString())
+                val response = PartieAPI.API().listPartiesUser(userId)
+
                 if (response.isSuccessful) {
                     val parties = response.body() ?: emptyList()
                     initRecyclerViews(parties) // Inicializa los RecyclerViews con las parties de la API

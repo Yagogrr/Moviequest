@@ -35,6 +35,10 @@ interface PartieService {
     @GET("/Partie")
     suspend fun listParties(): Response<List<Partie>>
 
+    @GET("/Parties/usuario/{id}")
+    suspend fun listPartiesUser(@Path("id") id: Int): Response<List<Partie>>
+
+
     @POST("/Partie/crear")
     suspend fun createPartie(@Body partieRequest: PartieRequest): Response<Partie>
 

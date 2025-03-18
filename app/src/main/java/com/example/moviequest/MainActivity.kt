@@ -36,13 +36,16 @@ class MainActivity : AppCompatActivity() {
         var gmail: TextView
         gmail = findViewById(R.id.gmail2)
 
-        val idText = findViewById<TextInputEditText>(R.id.textId).text.toString()
-        val id = idText.toIntOrNull() ?: 0
-
+        val id: TextView = findViewById(R.id.textId)
+        val idText = id.text.toString()
+        if (idText.isEmpty()) {
+            id.setText("0")
+        }
         var search: Button = findViewById(R.id.button2)
         search.setOnClickListener{
             val usuario = application as Usuario
-            usuario.setDatosUsuario(id.toString().toInt(),nom.text.toString(), gmail.text.toString())
+            val userId = id.text.toString().toInt()
+            usuario.setDatosUsuario(userId,nom.text.toString(), gmail.text.toString())
             var intent = Intent(this,buscar_peliculas::class.java)
             startActivity(intent)
         }
