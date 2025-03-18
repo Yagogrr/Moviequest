@@ -28,6 +28,10 @@ interface PartieService {
     suspend fun editPartie(@Path("id") id: Int,@Body descripcionUpdate: DescripcionUpdate
     ): Response<Unit>
 
+    @PUT("/Partie/modTitol/{id}")
+    suspend fun editPartie(@Path("id") id: Int,@Body titolUpdate: TituloUpdate
+    ): Response<Unit>
+
     @GET("/Partie")
     suspend fun listParties(): Response<List<Partie>>
 
