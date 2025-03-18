@@ -80,44 +80,62 @@ class partie_engran : AppCompatActivity() {
         dialog.show()
     }
 
-    private fun editarPartie(partie: Partie) {
-        // Crear un EditText para ingresar la nueva descripción
-        val input = EditText(this@partie_engran)
-        input.hint = "Introdueix la nova descripció"
+    private fun editarPartie(partie: Partie, originalTitle: String? = null, originalDesc: String? = null) {
+        val currentTitle = originalTitle ?: findViewById<TextView>(R.id.textViewNombre).text.toString()
+        val currentDesc = originalDesc ?: findViewById<TextView>(R.id.textViewDescripcion).text.toString()
 
-        // Crear un AlertDialog con un campo de entrada
-        val dialog = AlertDialog.Builder(this@partie_engran)
-            .setTitle("Editar descripció de la Partie")
-            .setMessage("Introdueix la nueva descripció de la Partie")
-            .setView(input)
-            .setPositiveButton("Aceptar") { dialog, which ->
-                val nuevaDescripcion = input.text.toString()
+        // Vemos que hay que actualizar
+        val titleChanged = partie.titulo != currentTitle
+        val descChanged = partie.descripcion != currentDesc
 
-                // Validar si la nueva descripción no está vacía
-                if (nuevaDescripcion.isNotBlank()) {
-                    // Crear un objeto DescripcionUpdate
-                    val descripcionUpdate = DescripcionUpdate(descripcion = nuevaDescripcion)
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                var titleUpdateSuccess = true
+                var descUpdateSuccess = true
 
-                    // Llamar a la API con la nueva descripción
-                    CoroutineScope(Dispatchers.IO).launch {
-                        val response = PartieAPI.API().editPartie(partie.id, descripcionUpdate)
+                //Solo cambia el titulo si solo se ha cambiado el titulo
+                if (titleChanged) {
+                    val titleResponse = PartieAPI.API().editPartie(
+                        partie.id,
+                        TituloUpdate(titulo = partie.titulo)
+                    )
+                    titleUpdateSuccess = titleResponse.isSuccessful
+                }
 
-                        withContext(Dispatchers.Main) {
-                            if (response.isSuccessful) {
-                                Toast.makeText(this@partie_engran, "Partie actualizada", Toast.LENGTH_SHORT).show()
-                            } else {
-                                Toast.makeText(this@partie_engran, "Error al actualizar la partie", Toast.LENGTH_SHORT).show()
-                            }
+                // Solo cambia la descripción si solo se ha cambiado la descripción
+                if (descChanged) {
+                    val descResponse = PartieAPI.API().editPartie(
+                        partie.id,
+                        DescripcionUpdate(descripcion = partie.descripcion)
+                    )
+                    descUpdateSuccess = descResponse.isSuccessful
+                }
+
+                withContext(Dispatchers.Main) {
+                    if (titleUpdateSuccess && descUpdateSuccess) {
+                        // Update UI with the new data
+                        if (titleChanged) {
+                            findViewById<TextView>(R.id.textViewNombre).text = partie.titulo
                         }
+                        if (descChanged) {
+                            findViewById<TextView>(R.id.textViewDescripcion).text = partie.descripcion
+                        }
+                        Toast.makeText(this@partie_engran, "Partie actualizada correctamente", Toast.LENGTH_SHORT).show()
+                    } else {
+                        // Handle errors
+                        val errorMessage = when {
+                            !titleUpdateSuccess -> "Error al actualizar título"
+                            !descUpdateSuccess -> "Error al actualizar descripción"
+                            else -> "Error desconocido"
+                        }
+                        Toast.makeText(this@partie_engran, errorMessage, Toast.LENGTH_SHORT).show()
                     }
-                } else {
-                    Toast.makeText(this@partie_engran, "La descripción no puede estar vacía", Toast.LENGTH_SHORT).show()
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(this@partie_engran, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
                 }
             }
-            .setNegativeButton("Cancelar", null)
-            .create()
-
-        // Mostrar el diálogo
-        dialog.show()
+        }
     }
 }

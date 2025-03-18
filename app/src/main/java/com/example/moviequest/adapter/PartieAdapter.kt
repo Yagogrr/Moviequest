@@ -36,7 +36,7 @@ class PartieAdapter(
             val intent = Intent(context, partie_engran::class.java).apply {
                 putExtra("PARTIE_NOM", item.titulo)
                 putExtra("PARTIE_DESC", item.descripcion)
-                putExtra("PARTIE_ID", item.id)
+                putExtra("PARTIE_ID", item.id.toString())
             }
             context.startActivity(intent)
         }
