@@ -101,41 +101,34 @@ class Partiesglobal : AppCompatActivity() {
 
         builder.setItems(options) { dialog, which ->
             when (which) {
-                0 -> editarPartie(partie)
+                0 -> editarNomPartie(partie)
                 1 -> deletePartieWithConfirmation(partie)
-                2 -> editarNomPartie(partie)
             }
         }
         builder.show()
     }
     private fun editarNomPartie(partie : Partie){
-
-    }
-    private fun editarPartie(partie: Partie) {
         // Crear un EditText para ingresar la nueva descripción
         val input = EditText(this@Partiesglobal)
-        input.hint = "Introdueix la nova descripció"
+        input.hint = "Introdueix el nou titol"
 
         // Crear un AlertDialog con un campo de entrada
         val dialog = AlertDialog.Builder(this@Partiesglobal)
-            .setTitle("Editar descripció de la Partie")
-            .setMessage("Introdueix la nueva descripció de la Partie")
+            .setTitle("Editar el titol de la Partie")
+            .setMessage( "Introdueix el nou titol")
             .setView(input)
             .setPositiveButton("Aceptar") { dialog, which ->
                 val nuevaDescripcion = input.text.toString()
-
                 // Validar si la nueva descripción no está vacía
                 if (nuevaDescripcion.isNotBlank()) {
-                    // Crear un objeto DescripcionUpdate
-                    val descripcionUpdate = DescripcionUpdate(descripcion = nuevaDescripcion)
-
                     // Llamar a la API con la nueva descripción
                     CoroutineScope(Dispatchers.IO).launch {
-                        val response = PartieAPI.API().editPartie(partie.id, descripcionUpdate)
+                        val titolUpdate = TituloUpdate(titulo = nuevaDescripcion)
+                        val response = PartieAPI.API().editPartie(partie.id, titolUpdate)
 
                         withContext(Dispatchers.Main) {
                             if (response.isSuccessful) {
-                                loadParties() // Recargar la lista de parties
+                                loadParties()
                                 Toast.makeText(this@Partiesglobal, "Partie actualizada", Toast.LENGTH_SHORT).show()
                             } else {
                                 showErrorToast("Error al actualizar la partie: ${response.code()}")
@@ -152,7 +145,6 @@ class Partiesglobal : AppCompatActivity() {
         // Mostrar el diálogo
         dialog.show()
     }
-
 
     private fun deletePartieWithConfirmation(partie: Partie) {
         val builder = AlertDialog.Builder(this)
