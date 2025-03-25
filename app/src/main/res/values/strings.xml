@@ -62,4 +62,5 @@
     <string name="TERROR">TERROR</string>
     <string name="ACCIO">ACCIÓ</string>
     <string name="ANIMACIO">ANIMACIÓ</string>
+    <string name="graficPeliculesMesVisitades">Gràfics sobre les teves pel·lícules més visitades</string>
 </resources>
