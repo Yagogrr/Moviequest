@@ -47,7 +47,9 @@ class footer_fragment : Fragment() {
                 }
 
                 R.id.controller -> {
-
+                    if (activity !is Partiesglobal) {
+                        startActivity(Intent(requireActivity(), grafics::class.java))
+                    }
                     true
                 }
 
@@ -69,6 +71,7 @@ class footer_fragment : Fragment() {
             buscar_peliculas::class.java -> bottomNav.selectedItemId = R.id.search
             user_activity::class.java -> bottomNav.selectedItemId = R.id.user
             Partiesglobal::class.java -> bottomNav.selectedItemId = R.id.party
+            grafics::class.java -> bottomNav.selectedItemId = R.id.controller
 
         }
     }
