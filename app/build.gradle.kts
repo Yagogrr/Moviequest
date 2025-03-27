@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -60,4 +61,10 @@ dependencies {
 
     implementation("com.github.bumptech.glide:glide:4.12.0") // o la versión más reciente
     annotationProcessor("com.github.bumptech.glide:compiler:4.12.0") // si es necesario para el procesamiento de anotaciones
+    // Import the BoM for the Firebase platform
+    implementation(platform( libs.firebase.bom))
+
+    // Add the dependency for the Analytics library
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation(libs.firebase.analytics)
 }

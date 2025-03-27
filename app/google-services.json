@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "880086489606",
+    "project_id": "generosmqstats",
+    "storage_bucket": "generosmqstats.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:880086489606:android:965eabfa9d13cafb520187",
+        "android_client_info": {
+          "package_name": "com.example.moviequest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAohaAnvy-u9uGknmJ5fPsotLj3gRExSM8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
