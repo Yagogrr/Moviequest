@@ -1,6 +1,7 @@
 package com.example.moviequest
 
 import android.os.Bundle;
+import android.util.Log
 import android.view.ContextMenu;
 import android.view.LayoutInflater
 import android.view.MenuInflater;
@@ -170,6 +171,14 @@ class Partiesglobal : AppCompatActivity() {
             try {
                 val response = PartieAPI.API().deletePartie(partie.id) // Llamar a la API para eliminar la partie
                 if (response.isSuccessful) {
+                    Usuario.estadistica.elementsBorrats++
+                    val usuarioApp = application as? Usuario
+                    if (usuarioApp != null) {
+                        usuarioApp.saveStats()
+                        Log.d("onMovieClicked", "Estadísticas guardadas.${Usuario.estadistica.elementsBorrats}")
+                    } else {
+                        Log.e("onMovieClicked", "Error al obtener la instancia de Usuario para guardar estadísticas.")
+                    }
                     loadParties() // Recargar la lista de parties
                     Toast.makeText(this@Partiesglobal, "Partie eliminada", Toast.LENGTH_SHORT).show()
                 } else {
@@ -202,6 +211,14 @@ class Partiesglobal : AppCompatActivity() {
 
                     if (response.isSuccessful) {
                         val partieCreada = response.body()
+                        Usuario.estadistica.elementsCreats++
+                        val usuarioApp = application as? Usuario
+                        if (usuarioApp != null) {
+                            usuarioApp.saveStats()
+                            Log.d("onMovieClicked", "Estadísticas guardadas.${Usuario.estadistica.elementsCreats}")
+                        } else {
+                            Log.e("onMovieClicked", "Error al obtener la instancia de Usuario para guardar estadísticas.")
+                        }
                         loadParties()
                         println("Partie creada correctament: $partieCreada")
                     } else {
