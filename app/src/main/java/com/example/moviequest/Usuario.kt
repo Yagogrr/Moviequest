@@ -12,7 +12,7 @@ import com.google.firebase.ktx.Firebase
 data class statistics(
     var elementsBorrats: Int = 0,
     var elementsCreats: Int = 0,
-    var generes: ArrayList<Int> = arrayListOf<Int>(0, 0, 0, 0)
+    var generes: ArrayList<Int> = arrayListOf<Int>(0, 0, 0, 0)  //[accion, animacion, fantasia, terror]
 )
 
 class Usuario : Application() {
