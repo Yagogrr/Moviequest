@@ -1,6 +1,11 @@
 package com.example.moviequest
 
+import android.graphics.Color
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -17,4 +22,12 @@ class grafics : AppCompatActivity() {
             insets
         }
     }
+    private fun OnEstadisticaGuardada(success: Boolean) {
+        if (success){
+            Toast.makeText(this,"Estadistica Guardada Correctament", Toast.LENGTH_LONG).show()
+        }else{
+            Toast.makeText(this,"Estadistica Guardada Correctament", Toast.LENGTH_LONG).show()
+        }
+    }
+
 }

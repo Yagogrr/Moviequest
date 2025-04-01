@@ -47,6 +47,7 @@ dependencies {
     //dependencia para el splashScreen
     implementation("androidx.core:core-splashscreen:1.0.0-rc01")
     implementation(libs.androidx.runtime.saved.instance.state)
+    implementation(libs.firebase.firestore.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
