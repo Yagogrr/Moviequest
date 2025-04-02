@@ -2,6 +2,7 @@ package com.example.moviequest;
 
 import android.content.Intent
 import android.os.Bundle;
+import android.util.Log
 import android.widget.TextView
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -88,6 +89,24 @@ class Filtres : AppCompatActivity() {
 
     private fun onMovieClicked(movie: Movie) {
         Toast.makeText(this, "Película seleccionada: ${movie.nombre}", Toast.LENGTH_SHORT).show()
+        when (movie.genero.lowercase()) {
+            "acción" -> Usuario.estadistica.generes[0]++ // Índice 0 para Acción
+            "animación" -> Usuario.estadistica.generes[1]++ // Índice 1 para Animación
+            "fantasía" -> Usuario.estadistica.generes[2]++ // Índice 2 para Fantasía
+            "terror" -> Usuario.estadistica.generes[3]++ // Índice 3 para Terror
+            else -> {
+
+                Log.w("onMovieClicked", "Género no rastreado encontrado: ${movie.genero}")
+            }
+        }
+
+        val usuarioApp = application as? Usuario
+        if (usuarioApp != null) {
+            usuarioApp.saveStats()
+            Log.d("onMovieClicked", "Estadísticas guardadas. Géneros: ${Usuario.estadistica.generes}")
+        } else {
+            Log.e("onMovieClicked", "Error al obtener la instancia de Usuario para guardar estadísticas.")
+        }
         val intent = Intent(this, pelicula_engran::class.java)
         intent.putExtra("MOVIE_NOM", movie.nombre)
         intent.putExtra("MOVIE_FOTO", movie.foto)
