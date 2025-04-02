@@ -47,7 +47,7 @@ class footer_fragment : Fragment() {
                 }
 
                 R.id.controller -> {
-                    if (activity !is Partiesglobal) {
+                    if (activity !is grafics) {
                         startActivity(Intent(requireActivity(), grafics::class.java))
                     }
                     true
