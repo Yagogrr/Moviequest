@@ -72,7 +72,11 @@ dependencies {
     // Add the dependency for the Analytics library
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation(libs.firebase.analytics)
-
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
+    testImplementation ("junit:junit:4.13.2")
+    testImplementation ("androidx.arch.core:core-testing:2.2.0")
+    testImplementation ("io.mockk:mockk:1.13.4")
     implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
 
 }
