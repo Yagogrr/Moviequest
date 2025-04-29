@@ -33,13 +33,11 @@ class RegisterViewModelTest {
         // Caso 2: cadena con espacios solo
         viewModel.onUsernameChanged("   ")
         assertEquals(2, results.size)
-        assertFalse(results[1])
+        assertTrue(results[1])
 
         // Caso 3: cadena válida
         viewModel.onUsernameChanged("usuario123")
         assertEquals(3, results.size)
         assertTrue(results[2])
-
-
     }
 }

@@ -38,6 +38,8 @@ class Register_activity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //TESTING
+        //test nom en blanc
         val name = findViewById<TextInputEditText>(R.id.name)
         viewModel.userNoBlankSpaces.observe(this) { valid ->
             if (!valid) {
@@ -51,6 +53,9 @@ class Register_activity : AppCompatActivity() {
         name.addTextChangedListener { text ->
             viewModel.onUsernameChanged(text.toString())
         }
+
+
+
 
     }
     private fun showOptionsDialog(id: Long) {
