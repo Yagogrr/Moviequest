@@ -54,7 +54,21 @@ class Register_activity : AppCompatActivity() {
             viewModel.onUsernameChanged(text.toString())
         }
 
+        //test data de neixement en blanc
+        //test nom en blanc
+        val data = findViewById<TextInputEditText>(R.id.name)
+        viewModel.userNoBlankSpaces.observe(this) { valid ->
+            if (!valid) {
+                name.error = "El nom no put estar buit"
+            } else {
+                name.error = null
+            }
+        }
 
+        // Cada vez que cambie el texto, avisamos al ViewModel
+        name.addTextChangedListener { text ->
+            viewModel.onUsernameChanged(text.toString())
+        }
 
 
     }
