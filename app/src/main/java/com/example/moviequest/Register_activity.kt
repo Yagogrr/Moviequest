@@ -9,11 +9,14 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class Register_activity : AppCompatActivity() {
+    lateinit var binding: Register_activity
+    private val model:ActivityRegistre by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -33,6 +36,9 @@ class Register_activity : AppCompatActivity() {
         iniciSessio.setOnClickListener{
             var intent = Intent(this,MainActivity::class.java)
             startActivity(intent)
+        }
+        model.validaciodades.observe(this){Estat ->
+            binding. .setError(Estat.errorNomUsuari)
         }
 
     }

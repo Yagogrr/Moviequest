@@ -2,10 +2,6 @@ package com.example.moviequest
 
 import android.graphics.Color
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.moviequest.databinding.ActivityGraficsBinding
@@ -18,6 +14,7 @@ import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.DefaultValueFormatter
+import com.github.mikephil.charting.formatter.ValueFormatter
 
 
 class grafics : AppCompatActivity() {
@@ -40,7 +37,7 @@ class grafics : AppCompatActivity() {
             PieEntry(Usuario.estadistica.elementsCreats.toFloat(), "Elements creats"), // Valor 70%
             PieEntry(Usuario.estadistica.elementsBorrats.toFloat(), "Elements eliminats")  // Valor 30%
         )
-        val pieDataSet = PieDataSet(entries, "Distribució")
+        val pieDataSet = PieDataSet(entries, "")
         pieDataSet.colors = listOf(Color.rgb(135, 206, 250), Color.rgb(255, 182, 193)) // Blau clar i rosa clar
         pieDataSet.valueTextColor = Color.BLACK // Color del text
         pieDataSet.valueTextSize = 16f // Mida del text
@@ -63,12 +60,12 @@ class grafics : AppCompatActivity() {
 
     private fun UpdateBarGraph() {
         val entries = ArrayList<BarEntry>()
+        val textos = listOf("accio", "animacio", "fantasia", "terror")
         for (i in Usuario.estadistica.generes.indices) {
-            entries.add(BarEntry((i + 1).toFloat(), Usuario.estadistica.generes[i].toFloat()))
+            entries.add(BarEntry(i.toFloat(), Usuario.estadistica.generes[i].toFloat())) // Usa i para el índice
         }
 
         val barDataSet = BarDataSet(entries, "Generes")
-
         val pastelColors = listOf(
             Color.rgb(255, 204, 204), // Rosa clar
             Color.rgb(204, 229, 255), // Blau clar
@@ -78,21 +75,31 @@ class grafics : AppCompatActivity() {
         barDataSet.colors = pastelColors
         barDataSet.valueTextColor = Color.BLACK
         barDataSet.valueTextSize = 16f
-        barDataSet.valueFormatter = DefaultValueFormatter(0)
-
+        binding.grafic2.xAxis.apply {
+            valueFormatter = object : ValueFormatter() {
+                override fun getFormattedValue(value: Float): String {
+                    val index = value.toInt()
+                    return if (index in textos.indices) textos[index] else ""
+                }
+            }
+            setDrawLabels(true)
+            granularity = 1f // Asegura que solo haya un valor por cada barra
+            labelCount = textos.size // Establece el número de etiquetas
+            position = XAxis.XAxisPosition.BOTTOM // Coloca las etiquetas en la parte inferior
+        }
         binding.grafic2.apply {
             data = BarData(barDataSet)
-            xAxis.setDrawGridLines(false)
-            xAxis.position = XAxis.XAxisPosition.BOTTOM
-            axisLeft.setDrawGridLines(false)
-            axisRight.setDrawAxisLine(false)
-            axisRight.setDrawGridLines(false)
-            axisRight.setDrawLabels(false)
-            description.text = "Genes vists"
-            description.isEnabled = true // Activa la descripció
-            setFitBars(true) // Ajusta les barres al gràfic
-            animateY(1000) // Animació en Y
-            invalidate()
+            xAxis.setDrawGridLines(false) // Desactivar las líneas del eje X
+            axisLeft.setDrawGridLines(false) // Desactivar las líneas del eje Y
+            axisRight.setDrawAxisLine(false) // Desactivar la línea del eje Y derecho
+            axisRight.setDrawGridLines(false) // Desactivar las líneas del eje Y derecho
+            axisRight.setDrawLabels(false) // Desactivar las etiquetas del eje Y derecho
+            description.isEnabled = false // Desactivar la descripción
+            setFitBars(true) // Ajusta las barras al gráfico
+            animateY(1000) // Animación en Y
+            invalidate() // Actualizar el gráfico
         }
     }
+
+
 }
