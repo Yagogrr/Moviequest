@@ -39,5 +39,7 @@ class RegisterViewModelTest {
         viewModel.onUsernameChanged("usuario123")
         assertEquals(3, results.size)
         assertTrue(results[2])
+
+
     }
 }

@@ -1,13 +1,9 @@
 package com.example.moviequest
 
 import android.app.AlertDialog
-import android.content.DialogInterface
 import android.content.Intent
-import android.database.Cursor
-import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.widget.Button
-import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
