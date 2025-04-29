@@ -99,6 +99,7 @@
         app:layout_constraintEnd_toEndOf="@id/firstNameInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/aniversari"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_background"
