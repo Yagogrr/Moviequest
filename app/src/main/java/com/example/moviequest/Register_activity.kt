@@ -13,10 +13,14 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.widget.addTextChangedListener
+import com.google.android.material.textfield.TextInputEditText
 
 class Register_activity : AppCompatActivity() {
-    lateinit var binding: Register_activity
-    private val model:ActivityRegistre by viewModels()
+
+    private val viewModel: RegisterViewModel by viewModels()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -37,8 +41,19 @@ class Register_activity : AppCompatActivity() {
             var intent = Intent(this,MainActivity::class.java)
             startActivity(intent)
         }
-        model.validaciodades.observe(this){Estat ->
-            binding. .setError(Estat.errorNomUsuari)
+
+        val name = findViewById<TextInputEditText>(R.id.name)
+        viewModel.userNoBlankSpaces.observe(this) { valid ->
+            if (!valid) {
+                name.error = "El nom no put estar buit"
+            } else {
+                name.error = null
+            }
+        }
+
+        // Cada vez que cambie el texto, avisamos al ViewModel
+        name.addTextChangedListener { text ->
+            viewModel.onUsernameChanged(text.toString())
         }
 
     }
