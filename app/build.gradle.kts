@@ -55,6 +55,10 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation("androidx.test:core:1.5.0")
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("androidx.test:rules:1.5.0") // <- Aquesta és clau per `ActivityScenarioRule`
+
 
     implementation("com.squareup.retrofit2:retrofit:2.9.0") // o la versión más reciente
     implementation("com.squareup.retrofit2:converter-gson:2.9.0") // o la versión más reciente

@@ -41,7 +41,7 @@ class Register_activity : AppCompatActivity() {
         //TESTING
         //test nom en blanc
         val name = findViewById<TextInputEditText>(R.id.name)
-        viewModel.userNoBlankSpaces.observe(this) { valid ->
+        viewModel.noBlankSpaces.observe(this) { valid ->
             if (!valid) {
                 name.error = "El nom no put estar buit"
             } else {
@@ -55,8 +55,8 @@ class Register_activity : AppCompatActivity() {
         }
 
         //test data de neixement en blanc
-        val data = findViewById<TextInputEditText>(R.id.data)
-        viewModel.userNoBlankSpaces.observe(this) { valid ->
+        val data = findViewById<TextInputEditText>(R.id.aniversari)
+        viewModel.noBlankSpaces.observe(this) { valid ->
             if (!valid) {
                 data.error = "La data de neixement no pot estar en blanc"
             } else {
