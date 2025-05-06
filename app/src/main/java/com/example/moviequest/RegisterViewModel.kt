@@ -28,7 +28,7 @@ class RegisterViewModel : ViewModel() {
 
     // LiveData específicos para tests individuales
     private val _userNoBlankSpaces = MutableLiveData<Boolean>()
-    val userNoBlankSpaces: LiveData<Boolean> = _userNoBlankSpaces
+    val noBlankSpaces: LiveData<Boolean> = _userNoBlankSpaces
 
     // Datos del formulario
     private var username: String = ""
