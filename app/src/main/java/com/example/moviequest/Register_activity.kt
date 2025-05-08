@@ -11,6 +11,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.addTextChangedListener
 import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 
 class Register_activity : AppCompatActivity() {
 
@@ -65,9 +66,26 @@ class Register_activity : AppCompatActivity() {
         }
 
         // Cada vez que cambie el texto, avisamos al ViewModel
-        name.addTextChangedListener { text ->
+        data.addTextChangedListener { text ->
             viewModel.onUsernameChanged(text.toString())
         }
+
+        //test email en blanc
+        val email = findViewById<TextInputEditText>(R.id.email)
+        viewModel.noBlankSpaces.observe(this) { valid ->
+            if (!valid) {
+                email.error = "El email no pot estar en blanc"
+            } else {
+                email.error = null
+            }
+        }
+
+        // Cada vez que cambie el texto, avisamos al ViewModel
+        email.addTextChangedListener { text ->
+            viewModel.onUsernameChanged(text.toString())
+        }
+
+
 
 
     }

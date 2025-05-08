@@ -16,6 +16,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+        <!-- Aquí van las demás actividades -->
         <activity
             android:name=".grafics"
             android:exported="false" />
@@ -40,18 +42,23 @@
         <activity
             android:name=".buscar_peliculas"
             android:exported="true" />
+
+        <!-- Actividad de registro que se lanza primero -->
         <activity
             android:name=".Register_activity"
-            android:exported="true" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Desactiva el intent-filter de MainActivity -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/Theme.App.Starting">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <!-- Ya no es necesario tener un intent-filter aquí -->
         </activity>
     </application>
 

@@ -22,8 +22,25 @@ class RegistreActivityUITest {
     @Test
     fun testNomUsuariBuit() {
         onView(withId(R.id.name)).perform(clearText())
-        onView(withId(R.id.iniciSessio)).perform(click())
         onView(withId(R.id.name))
             .check(matches(hasErrorText("El nom no put estar buit")))
+    }
+    @Test
+    fun testDataNeixementBuit() {
+        onView(withId(R.id.aniversari)).perform(clearText())
+        onView(withId(R.id.aniversari))
+            .check(matches(hasErrorText("La data de neixement no pot estar en blanc")))
+    }
+    @Test
+    fun testEmailBuit() {
+        onView(withId(R.id.email)).perform(clearText())
+        onView(withId(R.id.email))
+            .check(matches(hasErrorText("El email no pot estar en blanc")))
+    }
+    @Test
+    fun lesContrasenyesSonIguals() {
+        onView(withId(R.id.email)).perform(clearText())
+        onView(withId(R.id.email))
+            .check(matches(hasErrorText("El email no pot estar en blanc")))
     }
 }
