@@ -53,12 +53,12 @@ class RegisterViewModelTest {
         // Caso 1: cadena vacía
         viewModel.onSurnameChanged("")
         assertFalse(states.last().isValid)
-        assertEquals("El/la Cognoms no pot estar buit/da", states.last().surnameError)
+        assertEquals("Els Cognoms no poden estar buits", states.last().surnameError)
 
         // Caso 2: cadena con espacios solo
         viewModel.onSurnameChanged("   ")
         assertFalse(states.last().isValid)
-        assertEquals("El/la Cognoms no pot estar buit/da", states.last().surnameError)
+        assertEquals("Els Cognoms no poden estar buits", states.last().surnameError)
     }
 
     @Test
@@ -69,12 +69,12 @@ class RegisterViewModelTest {
         // Caso 1: cadena vacía
         viewModel.onBirthdateChanged("")
         assertFalse(states.last().isValid)
-        assertEquals("El/la Data naixement no pot estar buit/da", states.last().birthdateError)
+        assertEquals("La Data naixement no pot estar buida", states.last().birthdateError)
 
         // Caso 2: cadena con espacios solo
         viewModel.onBirthdateChanged("   ")
         assertFalse(states.last().isValid)
-        assertEquals("El/la Data naixement no pot estar buit/da", states.last().birthdateError)
+        assertEquals("La Data naixement no pot estar buida", states.last().birthdateError)
     }
 
     @Test
@@ -85,12 +85,12 @@ class RegisterViewModelTest {
         // Caso 1: cadena vacía
         viewModel.onPhoneChanged("")
         assertFalse(states.last().isValid)
-        assertEquals("El/la Telèfon no pot estar buit/da", states.last().phoneError)
+        assertEquals("El Telèfon no pot estar buit", states.last().phoneError)
 
         // Caso 2: cadena con espacios solo
         viewModel.onPhoneChanged("   ")
         assertFalse(states.last().isValid)
-        assertEquals("El/la Telèfon no pot estar buit/da", states.last().phoneError)
+        assertEquals("El Telèfon no pot estar buit", states.last().phoneError)
     }
 
     @Test
@@ -131,12 +131,12 @@ class RegisterViewModelTest {
         // Caso 1: cadena vacía
         viewModel.onEmailChanged("")
         assertFalse(states.last().isValid)
-        assertEquals("El/la Gmail no pot estar buit/da", states.last().emailError)
+        assertEquals("El Gmail no pot estar buit", states.last().emailError)
 
         // Caso 2: cadena con espacios solo
         viewModel.onEmailChanged("   ")
         assertFalse(states.last().isValid)
-        assertEquals("El/la Gmail no pot estar buit/da", states.last().emailError)
+        assertEquals("El Gmail no pot estar buit", states.last().emailError)
     }
 
     @Test
@@ -147,12 +147,12 @@ class RegisterViewModelTest {
         // Caso 1: cadena vacía
         viewModel.onPasswordChanged("")
         assertFalse(states.last().isValid)
-        assertEquals("El/la Contrasenya no pot estar buit/da", states.last().passwordError)
+        assertEquals("La Contrasenya no pot estar buida", states.last().passwordError)
 
         // Caso 2: cadena con espacios solo
         viewModel.onPasswordChanged("   ")
         assertFalse(states.last().isValid)
-        assertEquals("El/la Contrasenya no pot estar buit/da", states.last().passwordError)
+        assertEquals("La Contrasenya no pot estar buida", states.last().passwordError)
     }
 
     @Test
@@ -163,12 +163,12 @@ class RegisterViewModelTest {
         // Caso 1: cadena vacía
         viewModel.onConfirmPasswordChanged("")
         assertFalse(states.last().isValid)
-        assertEquals("El/la Confirmar contrasenya no pot estar buit/da", states.last().confirmPasswordError)
+        assertEquals("La Confirmar contrasenya no pot estar buida", states.last().confirmPasswordError)
 
         // Caso 2: cadena con espacios solo
         viewModel.onConfirmPasswordChanged("   ")
         assertFalse(states.last().isValid)
-        assertEquals("El/la Confirmar contrasenya no pot estar buit/da", states.last().confirmPasswordError)
+        assertEquals("La Confirmar contrasenya no pot estar buida", states.last().confirmPasswordError)
     }
 
     // Nombres ofensivos
