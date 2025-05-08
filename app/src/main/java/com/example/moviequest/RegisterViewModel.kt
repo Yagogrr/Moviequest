@@ -66,7 +66,7 @@ class RegisterViewModel : ViewModel() {
         when {
             username.isBlank() -> {
                 _formState.value = currentState.copy(
-                    usernameError = "El Nom d'usuari no pot estar buit/da",
+                    usernameError = "El Nom d'usuari no pot estar buida",
                     isValid = false
                 )
             }
@@ -107,7 +107,7 @@ class RegisterViewModel : ViewModel() {
         when {
             surname.isBlank() -> {
                 _formState.value = currentState.copy(
-                    surnameError = "El/la Cognoms no pot estar buit/da",
+                    surnameError = "Els Cognoms no poden estar buits",
                     isValid = false
                 )
             }
@@ -132,7 +132,7 @@ class RegisterViewModel : ViewModel() {
         when {
             birthdate.isBlank() -> {
                 _formState.value = currentState.copy(
-                    birthdateError = "El/la Data naixement no pot estar buit/da",
+                    birthdateError = "La Data naixement no pot estar buida",
                     isValid = false
                 )
             }
@@ -163,7 +163,7 @@ class RegisterViewModel : ViewModel() {
         when {
             phone.isBlank() -> {
                 _formState.value = currentState.copy(
-                    phoneError = "El/la Telèfon no pot estar buit/da",
+                    phoneError = "El Telèfon no pot estar buit",
                     isValid = false
                 )
             }
@@ -188,7 +188,7 @@ class RegisterViewModel : ViewModel() {
         when {
             email.isBlank() -> {
                 _formState.value = currentState.copy(
-                    emailError = "El/la Gmail no pot estar buit/da",
+                    emailError = "El Gmail no pot estar buit",
                     isValid = false
                 )
             }
@@ -213,7 +213,7 @@ class RegisterViewModel : ViewModel() {
         when {
             password.isBlank() -> {
                 _formState.value = currentState.copy(
-                    passwordError = "El/la Contrasenya no pot estar buit/da",
+                    passwordError = "La Contrasenya no pot estar buida",
                     isValid = false
                 )
             }
@@ -249,7 +249,7 @@ class RegisterViewModel : ViewModel() {
         when {
             confirmPassword.isBlank() -> {
                 _formState.value = currentState.copy(
-                    confirmPasswordError = "El/la Confirmar contrasenya no pot estar buit/da",
+                    confirmPasswordError = "La Confirmar contrasenya no pot estar buida",
                     isValid = false
                 )
             }
