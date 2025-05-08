@@ -30,6 +30,14 @@ class RegisterViewModel : ViewModel() {
     private val _userNoBlankSpaces = MutableLiveData<Boolean>()
     val noBlankSpaces: LiveData<Boolean> = _userNoBlankSpaces
 
+    private val _passwordsMatch = MutableLiveData<Boolean>()
+    val passwordsMatch: LiveData<Boolean> = _passwordsMatch
+
+    fun onPasswordChanged(password1: String, password2: String) {
+        _passwordsMatch.value = password1 == password2
+    }
+
+
     // Datos del formulario
     private var username: String = ""
     private var name: String = ""

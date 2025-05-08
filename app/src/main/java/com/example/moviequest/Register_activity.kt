@@ -86,6 +86,25 @@ class Register_activity : AppCompatActivity() {
         }
 
 
+        //test contrasenyes
+        val contrasenya1 = findViewById<TextInputEditText>(R.id.contrasenya1)
+        val contrasenya2 = findViewById<TextInputEditText>(R.id.contrasenya2)
+
+        viewModel.passwordsMatch.observe(this) { match ->
+            if (!match) {
+                contrasenya2.error = "Les contrasenyes no coincideixen"
+            } else {
+                contrasenya2.error = null
+            }
+        }
+
+        contrasenya1.addTextChangedListener { text ->
+            viewModel.onPasswordChanged(text.toString(), contrasenya2.text.toString())
+        }
+
+        contrasenya2.addTextChangedListener { text ->
+            viewModel.onPasswordChanged(contrasenya1.text.toString(), text.toString())
+        }
 
 
     }
